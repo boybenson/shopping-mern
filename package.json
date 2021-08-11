@@ -8,9 +8,14 @@
   "private": false,
   "type": "module",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "post-install": "husky install"
   },
   "dependencies": {
     "express": "4.17.1"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "13.1.0",
+    "husky": "7.0.0"
   }
 }
