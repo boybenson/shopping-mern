@@ -8,4 +8,18 @@ describe("header", () => {
     expect(logoText).toBeInTheDocument();
     expect(logoText).toBeVisible();
   });
+
+  it("should display a signup link", () => {
+    render(<Header />);
+    let signupLink = screen.getByText("signup");
+    expect(signupLink).toBeInTheDocument();
+    expect(signupLink).toBeVisible();
+  });
+
+  it("should display signin link", () => {
+    render(<Header />);
+    let signinLink = screen.getByText("signin");
+    expect(signinLink).toBeInTheDocument();
+    expect(signinLink).toBeVisible();
+  });
 });
