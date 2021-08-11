@@ -1,0 +1,16 @@
+{
+  "name": "fast_food",
+  "version": "1.0.0",
+  "description": "This is a fast food delivery system",
+  "main": "server.js",
+  "author": "Yeboah Benson",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "4.17.1"
+  }
+}
