@@ -9,7 +9,8 @@
   "type": "module",
   "scripts": {
     "start": "nodemon server.js",
-    "post-install": "husky install"
+    "post-install": "husky install",
+    "test": "yarn test"
   },
   "dependencies": {
     "express": "4.17.1"
