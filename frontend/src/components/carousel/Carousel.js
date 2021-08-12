@@ -5,7 +5,7 @@ import { carouselData } from "../../data/carousel";
 const CarouselComponent = () => {
   return (
     <div>
-      <Carousel fade>
+      <Carousel fade interval={4000}>
         {carouselData.map((item, index) => {
           return (
             <Carousel.Item key={index}>
