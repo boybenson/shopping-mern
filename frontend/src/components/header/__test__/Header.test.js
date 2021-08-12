@@ -22,4 +22,12 @@ describe("header", () => {
     expect(signinLink).toBeInTheDocument();
     expect(signinLink).toBeVisible();
   });
+
+  it("should display signin link", () => {
+    render(<Header />);
+    let cartLink = screen.getByText("cart");
+    expect(cartLink).toBeInTheDocument();
+    expect(cartLink).toBeVisible();
+  });
+
 });

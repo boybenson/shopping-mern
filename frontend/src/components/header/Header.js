@@ -22,6 +22,9 @@ const Header = () => {
               {/* <LinkContainer to="/"> */}
               <Nav.Link>signin</Nav.Link>
               {/* </LinkContainer> */}
+              {/* <LinkContainer to="/"> */}
+              <Nav.Link>cart</Nav.Link>
+              {/* </LinkContainer> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
