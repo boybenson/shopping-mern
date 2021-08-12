@@ -9,7 +9,7 @@ const Header = () => {
         expand="lg"
         bg="dark"
         variant="dark"
-        className="py-2"
+        className="mb-2 py-2"
       >
         <Container>
           <LinkContainer to="/">
@@ -19,9 +19,6 @@ const Header = () => {
 
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
-              {/* <LinkContainer to="/"> */}
-              {/* <Nav.Link>Home</Nav.Link> */}
-              {/* </LinkContainer> */}
               <LinkContainer to="/v1/user/signup">
                 <Nav.Link>signup</Nav.Link>
               </LinkContainer>

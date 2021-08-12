@@ -5,6 +5,9 @@ import Header from "./components/header/Header";
 
 const HomeScreen = lazy(() => import("./screens/home-screen/home-container"));
 const CartScreen = lazy(() => import("./screens/cart-screen/cart-container"));
+const SpecificCategoryContainer = lazy(() =>
+  import("./screens/specific-category-screen/specific-category-container")
+);
 
 const App = () => {
   return (
@@ -14,6 +17,10 @@ const App = () => {
         <Suspense fallback={<div>Loading...</div>}>
           <main>
             <Switch>
+              <Route
+                path="/v1/category/:categoryName"
+                component={SpecificCategoryContainer}
+              />
               <Route path="/v1/cart" component={CartScreen} />
               <Route path="/" component={HomeScreen} />
             </Switch>
