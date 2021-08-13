@@ -9,7 +9,7 @@ export const categoriesData = [
     img: "/images/burger-1.jpg",
     name: "Burgers",
     category: "burger",
-    shortDesc: "The Best Classic Burgers in town...",
+    shortDesc: "The Best Classic Burgers made from africa...",
   },
   {
     img: "/images/pizza-boxes.jpg",
