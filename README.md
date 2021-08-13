@@ -1,9 +1,10 @@
-## Fast Food Delivery Web Application
+## Fast Food Delivery Web Application 🍔 🛵
+
 ### Tech Stack
-- Reactjs for frontend
-- React-Bootstrap to speed up development
-- Mongodb (mongoose)---no sql db
-- Expressjs as a framework for backend
-- yarn as package manager
-- jest for unit testing
-- react testing library on top of jest for component testing
+- [React Js](https://reactjs.org/)
+- [React Bootstrap](https://react-bootstrap.github.io/)
+- [Mongodb](https://www.mongodb.com/) with [Mongoose](https://mongoosejs.com/)
+- [Express Js](https://expressjs.com/)
+- [Jest Js](https://jestjs.io/)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [Yarn](https://yarnpkg.com/)
