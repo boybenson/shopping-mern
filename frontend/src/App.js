@@ -18,7 +18,7 @@ const App = () => {
           <main>
             <Switch>
               <Route
-                path="/v1/category/:categoryName"
+                path="/v1/category"
                 component={SpecificCategoryContainer}
               />
               <Route path="/v1/cart" component={CartScreen} />

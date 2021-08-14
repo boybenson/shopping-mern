@@ -3,15 +3,15 @@ import { Container } from "react-bootstrap";
 import { foodsData } from "../../data/foods";
 import SpecificCategoryComponent from "./specific-category-component";
 
-const SpecificCategoryContainer = ({ match }) => {
+const SpecificCategoryContainer = ({ location }) => {
   const [foods, setFoods] = useState([]);
 
   useEffect(() => {
     const data = foodsData.filter(
-      (item) => item.category === match.params.categoryName
+      (item) => item.category === location.search.slice(2)
     );
     setFoods(data);
-  }, [match.params.categoryName]);
+  }, [location.search]);
 
   return (
     <div>

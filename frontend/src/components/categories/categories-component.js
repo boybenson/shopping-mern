@@ -9,7 +9,7 @@ const CategoriesComponent = ({ name, shortDesc, img, category, key }) => {
         <Card.Body>
           <Card.Title className="fw-bold">{name}</Card.Title>
           <Card.Text>{shortDesc}</Card.Text>
-          <NavLink to={`/v1/category/${category}`}>
+          <NavLink to={`/v1/category?=${category}`}>
             <Button variant="outline-dark">View More</Button>
           </NavLink>
         </Card.Body>

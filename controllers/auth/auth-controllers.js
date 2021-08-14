@@ -1,12 +1,14 @@
+import cookieParser from "cookie-parser";
 import userModel from "../../models/users/userModel.js";
 import { generateToken } from "../../helpers/generate-token.js";
+
+const maxAge = 3 * 24 * 60 * 60;
 
 export const POST_SIGNUP_USER = async (req, res, next) => {
   const { userName, email, password, phone } = req.body;
 
   try {
-    //   checking if the email is in the database
-    let isUser = await userModel.findOne({ email });
+    const isUser = await userModel.findOne({ email });
     if (!isUser) {
       const newUser = await userModel.create({
         userName,
@@ -14,13 +16,17 @@ export const POST_SIGNUP_USER = async (req, res, next) => {
         email,
         password,
       });
-      const accessToken = generateToken(newUser._id);
-      res.status(200).json({
+      const accessToken = generateToken(newUser._id, maxAge);
+
+      res.cookie("accessToken", accessToken, {
+        httpOnly: true,
+        maxAge: maxAge * 1000,
+      });
+      res.status(201).json({
         username: newUser.userName,
         userId: newUser._id,
         role: newUser.role,
         phone: newUser.phone,
-        accessToken,
       });
     } else {
       const err = new Error();
@@ -61,15 +67,18 @@ export const POST_SIGNIN_USER = async (req, res, next) => {
       return;
     }
 
-    const accessToken = generateToken(user._id);
+    const accessToken = generateToken(user._id, maxAge);
 
+    res.cookie("accessToken", accessToken, {
+      httpOnly: true,
+      maxAge: maxAge * 1000,
+    });
     res.status(200).json({
       username: user.userName,
       email: user.email,
       userId: user._id,
       phone: user.phone,
       role: user.role,
-      accessToken,
     });
   } catch (error) {
     const err = new Error();
