@@ -1,5 +1,5 @@
 import userModel from "../../models/users/userModel.js";
-import { generateToken } from "../../utils/generate-token.js";
+import { generateToken } from "../../helpers/generate-token.js";
 
 export const POST_SIGNUP_USER = async (req, res, next) => {
   const { userName, email, password, phone } = req.body;

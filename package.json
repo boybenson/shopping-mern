@@ -10,7 +10,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "post-install": "husky install",
-    "test": "yarn test"
+    "test": "jest"
   },
   "dependencies": {
     "bcrypt": "5.0.1",
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "13.1.0",
-    "husky": "7.0.0"
+    "husky": "7.0.0",
+    "jest": "27.0.6"
   }
 }
