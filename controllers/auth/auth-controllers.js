@@ -1,4 +1,3 @@
-import cookieParser from "cookie-parser";
 import userModel from "../../models/users/userModel.js";
 import { generateToken } from "../../helpers/generate-token.js";
 
