@@ -1,10 +1,22 @@
-import cloud from "../../config/cloudinary.js";
 import foodModel from "../../models/foods/foodModel.js";
 
 export const POST_CREATE_A_FOOD = async (req, res, next) => {
+  const { name, category, price, cookingDuration, description } = req.body;
+  const imageUrl = req.file.path;
   try {
-    // console.log(req.body);
-    // console.log(req.file.path);
+    const newFood = await foodModel.create({
+      name,
+      category,
+      price,
+      cookingDuration,
+      description,
+      image: imageUrl,
+    });
+
+    res.status(201).json({
+      message: "food created successfully",
+      newFood,
+    });
   } catch (error) {
     const err = new Error(error.message);
     err.message = error.message;
