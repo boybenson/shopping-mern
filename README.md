@@ -1,7 +1,9 @@
 ## Fast Food Delivery Web Application 🍔 🛵
 
 ### Tech Stack
+
 - [React Js](https://reactjs.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started)
 - [React Bootstrap](https://react-bootstrap.github.io/)
 - [Mongodb](https://www.mongodb.com/) with [Mongoose](https://mongoosejs.com/)
 - [Express Js](https://expressjs.com/)
