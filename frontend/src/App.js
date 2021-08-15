@@ -11,6 +11,9 @@ const SpecificCategoryScreen = lazy(() =>
 const SigninScreen = lazy(() =>
   import("./screens/signin-screen/signin-container")
 );
+const SignupScreen = lazy(() =>
+  import("./screens/signup-screen/signup-container")
+);
 
 const App = () => {
   return (
@@ -20,6 +23,7 @@ const App = () => {
         <Suspense fallback={<div>Loading...</div>}>
           <main>
             <Switch>
+              <Route path="/v1/auth/signup" component={SignupScreen} />
               <Route path="/v1/auth/signin" component={SigninScreen} />
               <Route path="/v1/category" component={SpecificCategoryScreen} />
               <Route path="/v1/cart" component={CartScreen} />
