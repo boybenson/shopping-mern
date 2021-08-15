@@ -5,8 +5,12 @@ import { NavLink } from "react-router-dom";
 const SignupComponent = ({
   email,
   password,
+  confirmPassword,
+  phone,
   onChangeEmail,
   onChangePassword,
+  onChangeConfirmPassword,
+  onChangePhone,
 }) => {
   return (
     <div>
@@ -40,8 +44,8 @@ const SignupComponent = ({
               type="password"
               placeholder="*****************"
               size="lg"
-              onChange={onChangePassword}
-              defaultValue={password}
+              onChange={onChangeConfirmPassword}
+              defaultValue={confirmPassword}
             />
           </Form.Group>
 
@@ -51,8 +55,8 @@ const SignupComponent = ({
               type="tel"
               placeholder="0546949655"
               size="lg"
-              onChange={onChangePassword}
-              defaultValue={password}
+              onChange={onChangePhone}
+              defaultValue={phone}
             />
           </Form.Group>
 
