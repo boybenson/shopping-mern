@@ -26,6 +26,7 @@ export const POST_SIGNUP_USER = async (req, res, next) => {
         userId: newUser._id,
         role: newUser.role,
         phone: newUser.phone,
+        status: 201,
       });
     } else {
       const err = new Error();
@@ -78,6 +79,7 @@ export const POST_SIGNIN_USER = async (req, res, next) => {
       userId: user._id,
       phone: user.phone,
       role: user.role,
+      status: 200,
     });
   } catch (error) {
     const err = new Error();

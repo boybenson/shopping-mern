@@ -7,11 +7,12 @@ const SigninComponent = ({
   password,
   onChangeEmail,
   onChangePassword,
+  handleSubmit,
 }) => {
   return (
     <div className="p-4">
       <Container>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
@@ -19,7 +20,6 @@ const SigninComponent = ({
               placeholder="ybenson96@gmail.com"
               size="lg"
               onChange={onChangeEmail}
-              defaultValue={email}
             />
           </Form.Group>
 
@@ -30,7 +30,6 @@ const SigninComponent = ({
               placeholder="*****************"
               size="lg"
               onChange={onChangePassword}
-              defaultValue={password}
             />
           </Form.Group>
           <Button variant="outline-dark" type="submit">
