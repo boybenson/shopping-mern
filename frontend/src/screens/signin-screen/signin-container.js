@@ -21,14 +21,13 @@ const SigninContainer = () => {
     try {
       const res = await dispatch(userSignInRequest({ email, password }));
       const data = unwrapResult(res);
-      console.log("res", data);
       if (data.status === 200) {
         dispatch(signin(data));
       } else {
         dispatch(signinError(data));
       }
     } catch (error) {
-      console.log(error);
+      dispatch(signinError({ message: error.message, status: error.status }));
     }
   };
 
