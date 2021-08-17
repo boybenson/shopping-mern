@@ -1,21 +1,20 @@
 import React from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, Spinner } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const SignupComponent = ({
-  email,
-  password,
-  confirmPassword,
-  phone,
   onChangeEmail,
   onChangePassword,
   onChangeConfirmPassword,
   onChangePhone,
+  handleSubmit,
 }) => {
+  const { status } = useSelector((state) => state.signup);
   return (
     <div>
       <Container>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
@@ -23,7 +22,6 @@ const SignupComponent = ({
               placeholder="ybenson96@gmail.com"
               size="lg"
               onChange={onChangeEmail}
-              defaultValue={email}
             />
           </Form.Group>
 
@@ -34,7 +32,6 @@ const SignupComponent = ({
               placeholder="*****************"
               size="lg"
               onChange={onChangePassword}
-              defaultValue={password}
             />
           </Form.Group>
 
@@ -45,7 +42,6 @@ const SignupComponent = ({
               placeholder="*****************"
               size="lg"
               onChange={onChangeConfirmPassword}
-              defaultValue={confirmPassword}
             />
           </Form.Group>
 
@@ -56,13 +52,18 @@ const SignupComponent = ({
               placeholder="0546949655"
               size="lg"
               onChange={onChangePhone}
-              defaultValue={phone}
             />
           </Form.Group>
 
-          <Button variant="outline-dark" type="submit">
-            signup
-          </Button>
+          {status === "loading" ? (
+            <Button variant="dark" disabled>
+              <Spinner animation="border" />
+            </Button>
+          ) : (
+            <Button variant="outline-dark" type="submit">
+              signup
+            </Button>
+          )}
           <Form.Text className="text-muted h4 d-block py-2">
             Already have an account?{" "}
             <NavLink to="/v1/auth/signin" className="h6">

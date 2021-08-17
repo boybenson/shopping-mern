@@ -8,7 +8,7 @@ import {
   signin,
   signinError,
   userSignInRequest,
-} from "../../redux/auth/auth-slice";
+} from "../../redux/auth/signin-slice";
 
 const SigninContainer = () => {
   const history = useHistory();

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { handleLogout } from "../../helpers/logout";
-import { signOut } from "../../redux/auth/auth-slice";
+import { signOut } from "../../redux/auth/signin-slice";
 
 const Header = () => {
   const history = useHistory();

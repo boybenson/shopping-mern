@@ -1,16 +1,83 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { signupError, userSignUpRequest } from "../../redux/auth/signup-slice";
+import { unwrapResult } from "@reduxjs/toolkit";
 import SignupComponent from "./signup-component";
+import { useDispatch, useSelector } from "react-redux";
+import { signin } from "../../redux/auth/signin-slice";
+import { useHistory } from "react-router";
+import toast from "react-hot-toast";
+import { checkForAllInputs, checkIfPasswordsMatch } from "../../helpers/signup";
 
 const SignupContainer = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [phone, setPhone] = useState();
 
+  const { errorInfo } = useSelector((state) => state.signup);
+  const { userInfo } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/");
+    }
+  }, [history, userInfo]);
+
   const onChangeEmail = (e) => setEmail(e.target.value);
   const onChangePassword = (e) => setPassword(e.target.value);
   const onChangeConfirmPassword = (e) => setConfirmPassword(e.target.value);
   const onChangePhone = (e) => setPhone(e.target.value);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const allInputs = checkForAllInputs(
+        email,
+        password,
+        confirmPassword,
+        phone
+      );
+      if (allInputs) {
+        const passwordsMatch = checkIfPasswordsMatch(password, confirmPassword);
+
+        if (passwordsMatch) {
+          const res = await dispatch(
+            userSignUpRequest({ email, password, phone })
+          );
+
+          const data = unwrapResult(res);
+          if (data.status === 201) {
+            localStorage.setItem(
+              "userInfo",
+              JSON.stringify({
+                email: data.email,
+                phone: data.phone,
+                role: data.role,
+                userId: data.userId,
+                userName: data.userName,
+                status: data.status,
+              })
+            );
+            dispatch(signin(data));
+            toast.success("Account successfully created");
+            history.push("/");
+          } else {
+            dispatch(signupError(data));
+            toast.error("email already exists");
+          }
+        } else {
+          toast.error("sorry, passwords do not match");
+        }
+      } else {
+        toast.error("please fill all fields");
+      }
+    } catch (error) {
+      dispatch(signupError({ message: error?.message, status: error?.status }));
+      toast.error(errorInfo?.message);
+    }
+  };
 
   return (
     <SignupComponent
@@ -22,6 +89,7 @@ const SignupContainer = () => {
       onChangePassword={onChangePassword}
       onChangeConfirmPassword={onChangeConfirmPassword}
       onChangePhone={onChangePhone}
+      handleSubmit={handleSubmit}
     />
   );
 };
