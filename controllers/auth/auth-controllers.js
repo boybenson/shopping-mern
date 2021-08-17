@@ -17,16 +17,13 @@ export const POST_SIGNUP_USER = async (req, res, next) => {
       });
       const accessToken = generateToken(newUser._id, maxAge);
 
-      res.cookie("accessToken", accessToken, {
-        httpOnly: true,
-        maxAge: maxAge * 1000,
-      });
       res.status(201).json({
-        username: newUser.userName,
+        userName: newUser.userName,
         userId: newUser._id,
         role: newUser.role,
         phone: newUser.phone,
         status: 201,
+        accessToken,
       });
     } else {
       const err = new Error();
@@ -69,17 +66,14 @@ export const POST_SIGNIN_USER = async (req, res, next) => {
 
     const accessToken = generateToken(user._id, maxAge);
 
-    res.cookie("accessToken", accessToken, {
-      httpOnly: true,
-      maxAge: maxAge * 1000,
-    });
     res.status(200).json({
-      username: user.userName,
+      userName: user.userName,
       email: user.email,
       userId: user._id,
       phone: user.phone,
       role: user.role,
       status: 200,
+      accessToken,
     });
   } catch (error) {
     const err = new Error();

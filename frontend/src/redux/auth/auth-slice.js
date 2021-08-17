@@ -1,6 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const fetchUserInfoFromLocalStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
+
 export const userSignInRequest = createAsyncThunk(
   "auth/userSigIn",
   async (userInfo) => {
@@ -10,7 +14,6 @@ export const userSignInRequest = createAsyncThunk(
       },
     };
 
-    console.log(userInfo);
     const res = await axios.post(
       "http://localhost:8080/api/v1/auth/signin",
       {
@@ -26,7 +29,7 @@ export const userSignInRequest = createAsyncThunk(
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    userInfo: null,
+    userInfo: fetchUserInfoFromLocalStorage,
     status: null,
     errorInfo: null,
   },
@@ -40,6 +43,11 @@ const authSlice = createSlice({
       state.userInfo = null;
       state.status = "failed";
       state.errorInfo = action.payload;
+    },
+    signOut: (state, action) => {
+      state.userInfo = null;
+      state.status = null;
+      state.errorInfo = null;
     },
   },
   extraReducers: (builder) => {
@@ -65,6 +73,6 @@ const authSlice = createSlice({
 
 const { actions, reducer } = authSlice;
 
-export const { signin, signinError } = actions;
+export const { signin, signinError, signOut } = actions;
 
 export default reducer;
