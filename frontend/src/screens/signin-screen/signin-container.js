@@ -4,11 +4,13 @@ import SigninComponent from "./signin-component";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import toast from "react-hot-toast";
+import Cookies from "js-cookie";
 import {
   signin,
   signinError,
   userSignInRequest,
 } from "../../redux/auth/signin-slice";
+import { checkForAllInputs } from "../../helpers/signup";
 
 const SigninContainer = () => {
   const history = useHistory();
@@ -30,30 +32,36 @@ const SigninContainer = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await dispatch(userSignInRequest({ email, password }));
-      const data = unwrapResult(res);
-      if (data.status === 200) {
-        localStorage.setItem(
-          "userInfo",
-          JSON.stringify({
-            email: data.email,
-            phone: data.phone,
-            role: data.role,
-            userId: data.userId,
-            userName: data.userName,
-            status: data.status,
-          })
-        );
-        dispatch(signin(data));
-        toast.success("login successful");
-        history.push("/");
+      const allInputs = checkForAllInputs(email, password);
+      if (allInputs) {
+        const res = await dispatch(userSignInRequest({ email, password }));
+        const data = unwrapResult(res);
+        if (data.status === 200) {
+          localStorage.setItem(
+            "userInfo",
+            JSON.stringify({
+              email: data.email,
+              phone: data.phone,
+              role: data.role,
+              userId: data.userId,
+              userName: data.userName,
+              status: data.status,
+            })
+          );
+          dispatch(signin(data));
+          Cookies.set("accessToken", data.accessToken, { expires: 7 });
+          toast.success("login successful");
+          history.push("/");
+        } else {
+          dispatch(signinError(data));
+          toast.error(errorInfo.message);
+        }
       } else {
-        dispatch(signinError(data));
-        toast.error(errorInfo.message);
+        toast.error("please fill all fields");
       }
     } catch (error) {
-      dispatch(signinError({ message: error.message, status: error.status }));
-      toast.error(errorInfo.message);
+      dispatch(signinError({ message: error?.message, status: error?.status }));
+      toast.error(errorInfo?.message);
     }
   };
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Container, Form, Spinner } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import Cookies from "js-cookie";
 import { NavLink } from "react-router-dom";
 
 const SignupComponent = ({

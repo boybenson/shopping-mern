@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signin } from "../../redux/auth/signin-slice";
 import { useHistory } from "react-router";
 import toast from "react-hot-toast";
+import Cookies from "js-cookie";
 import { checkForAllInputs, checkIfPasswordsMatch } from "../../helpers/signup";
 
 const SignupContainer = () => {
@@ -14,7 +15,7 @@ const SignupContainer = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [phone, setPhone] = useState();
+  const [phone, setPhone] = useState("");
 
   const { errorInfo } = useSelector((state) => state.signup);
   const { userInfo } = useSelector((state) => state.auth);
@@ -41,12 +42,10 @@ const SignupContainer = () => {
       );
       if (allInputs) {
         const passwordsMatch = checkIfPasswordsMatch(password, confirmPassword);
-
         if (passwordsMatch) {
           const res = await dispatch(
             userSignUpRequest({ email, password, phone })
           );
-
           const data = unwrapResult(res);
           if (data.status === 201) {
             localStorage.setItem(
@@ -61,11 +60,12 @@ const SignupContainer = () => {
               })
             );
             dispatch(signin(data));
-            toast.success("Account successfully created");
+            Cookies.set("accessToken", data.accessToken, { expires: 7 });
+            toast.success("account created successfully");
             history.push("/");
           } else {
             dispatch(signupError(data));
-            toast.error("email already exists");
+            toast.error(errorInfo?.message);
           }
         } else {
           toast.error("sorry, passwords do not match");
@@ -74,7 +74,7 @@ const SignupContainer = () => {
         toast.error("please fill all fields");
       }
     } catch (error) {
-      dispatch(signupError({ message: error?.message, status: error?.status }));
+      dispatch(signupError({ message: error?.message }));
       toast.error(errorInfo?.message);
     }
   };

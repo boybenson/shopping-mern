@@ -19,7 +19,7 @@ const Header = () => {
   };
 
   return (
-    <header>
+    <header className="sticky-top">
       <Navbar
         collapseOnSelect
         expand="lg"
@@ -40,7 +40,7 @@ const Header = () => {
               {userInfo && (
                 <LinkContainer to="/">
                   <Nav.Link>
-                    Hello, {userInfo?.userName.split(" ")[1]}{" "}
+                    Hello, {userInfo?.userName.split(" ")[0]}{" "}
                   </Nav.Link>
                 </LinkContainer>
               )}
@@ -56,13 +56,17 @@ const Header = () => {
 
               {!userInfo && (
                 <LinkContainer to="/v1/auth/signup">
-                  <Nav.Link>signup</Nav.Link>
+                  <Nav.Link>
+                    <i class="fas fa-user-plus"> sign up </i>
+                  </Nav.Link>
                 </LinkContainer>
               )}
 
               {!userInfo && (
                 <LinkContainer to="/v1/auth/signin">
-                  <Nav.Link>signin</Nav.Link>
+                  <Nav.Link>
+                    <i class="fas fa-sign-in-alt"> sign in </i>
+                  </Nav.Link>
                 </LinkContainer>
               )}
 

@@ -15,7 +15,7 @@ export const userSignInRequest = createAsyncThunk(
     };
 
     const res = await axios.post(
-      "http://localhost:8080/api/v1/auth/signin",
+      "/api/v1/auth/signin",
       {
         email: userInfo.email,
         password: userInfo.password,
