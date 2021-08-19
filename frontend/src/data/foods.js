@@ -7,6 +7,7 @@ export const foodsData = [
     price: 20,
     duration: 30,
     _id: 1,
+    qtyToBuy: 1,
   },
   {
     img: "/foodsImages/fruit-2.jpg",
@@ -16,6 +17,7 @@ export const foodsData = [
     price: 30,
     duration: 15,
     _id: 2,
+    qtyToBuy: 1,
   },
   {
     img: "/foodsImages/fruit-3.jpg",
@@ -25,6 +27,7 @@ export const foodsData = [
     price: 10,
     duration: 45,
     _id: 3,
+    qtyToBuy: 1,
   },
   {
     img: "/foodsImages/burger-1.jpg",
@@ -34,6 +37,7 @@ export const foodsData = [
     price: 40,
     _id: 4,
     duration: 20,
+    qtyToBuy: 1,
   },
   {
     img: "/foodsImages/burger-2.jpg",
@@ -43,6 +47,7 @@ export const foodsData = [
     price: 15,
     duration: 30,
     _id: 5,
+    qtyToBuy: 1,
   },
   {
     img: "/foodsImages/burger-grill.jpg",
@@ -52,6 +57,7 @@ export const foodsData = [
     price: 12,
     duration: 100,
     _id: 6,
+    qtyToBuy: 1,
   },
   {
     img: "/foodsImages/chicken-khebab.jpg",
@@ -61,6 +67,7 @@ export const foodsData = [
     price: 250,
     duration: 120,
     _id: 7,
+    qtyToBuy: 1,
   },
   {
     img: "/foodsImages/fried-chicken.jpg",
@@ -70,6 +77,7 @@ export const foodsData = [
     price: 10,
     duration: 70,
     _id: 8,
+    qtyToBuy: 1,
   },
   {
     img: "/foodsImages/chicken-khebab.jpg",
@@ -79,6 +87,7 @@ export const foodsData = [
     price: 40,
     duration: 90,
     _id: 9,
+    qtyToBuy: 1,
   },
   {
     img: "/foodsImages/chicken-fried.jpg",
@@ -88,6 +97,7 @@ export const foodsData = [
     price: 60,
     duration: 30,
     _id: 10,
+    qtyToBuy: 1,
   },
   {
     img: "/foodsImages/pizza-boxes.jpg",
@@ -97,6 +107,7 @@ export const foodsData = [
     price: 10,
     duration: 30,
     _id: 11,
+    qtyToBuy: 1,
   },
   {
     img: "/foodsImages/pizza1.jpg",
@@ -106,5 +117,6 @@ export const foodsData = [
     price: 40,
     duration: 30,
     _id: 12,
+    qtyToBuy: 1,
   },
 ];
