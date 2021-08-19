@@ -11,17 +11,21 @@ import { handleError } from "./middlewares/error-handler/errorHandler.js";
 const app = express();
 const port = process.env.PORT;
 
-connectDatabase();
+const db = await connectDatabase();
 
-app.use(cors());
-app.use(express.json());
-app.use(cookieParser());
+if (db === true) {
+  app.use(cors());
+  app.use(express.json());
+  app.use(cookieParser());
 
-app.use("/api/v1/auth", authRoute);
-app.use("/api/v1/foods", foodRoute);
+  app.use("/api/v1/auth", authRoute);
+  app.use("/api/v1/foods", foodRoute);
 
-app.use(handleError);
+  app.use(handleError);
 
-app.listen(port, () => {
-  console.log(`App is running on port ${port}`);
-});
+  app.listen(port, () => {
+    console.log(`App is running on port ${port}`);
+  });
+} else {
+  console.log(`database connection error : ${db}`);
+}

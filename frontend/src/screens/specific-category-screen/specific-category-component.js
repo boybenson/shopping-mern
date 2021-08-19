@@ -13,7 +13,12 @@ const SpecificCategoryComponent = ({ foods, handleAddToCart }) => {
           return (
             <Col xs={12} sm={4} lg={3} className="py-2" key={index}>
               <Card key={index} className="p-2">
-                <Image variant="top" src={food.img} thumbnail />
+                <Image
+                  variant="top"
+                  src={food.image}
+                  thumbnail
+                  alt={`${food.name}.jgp`}
+                />
                 <Card.Body>
                   <Card.Title>{food.name}</Card.Title>
                   <Card.Text>{food.shortDesc}</Card.Text>

@@ -29,7 +29,7 @@ const CartComponent = ({
                 <Card className="py-2 my-2" key={index}>
                   <Row>
                     <Col sm={2} className="mt-2">
-                      <Image src={item.img} fluid thumbnail />
+                      <Image src={item.image} fluid thumbnail />
                     </Col>
                     <Col sm={3} className="mt-2">
                       <Card.Title>{item.name}</Card.Title>

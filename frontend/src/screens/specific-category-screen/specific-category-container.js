@@ -1,22 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { unwrapResult } from "@reduxjs/toolkit";
 import { Container } from "react-bootstrap";
-import { foodsData } from "../../data/foods";
 import SpecificCategoryComponent from "./specific-category-component";
 import toast from "react-hot-toast";
 import { addToCart } from "../../redux/cart/cart-slice";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  fetchSPecificCategoryFoods,
+  fetchSPecificCategoryFoodsRequest,
+} from "../../redux/food/specific-category-slice";
+import Loader from "../../components/loader/Loader";
 
 const SpecificCategoryContainer = ({ location }) => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
-  const [foods, setFoods] = useState([]);
+  const { foods, status } = useSelector((state) => state.specificCategory);
 
   useEffect(() => {
-    const data = foodsData.filter(
-      (item) => item.category === location.search.slice(2)
-    );
-    setFoods(data);
-  }, [location.search]);
+    const categoryName = location.search.slice(2);
+    const apiReq = async () => {
+      const res = await dispatch(
+        fetchSPecificCategoryFoodsRequest(categoryName)
+      );
+      const data = unwrapResult(res);
+      if (data.message === "success") {
+        dispatch(fetchSPecificCategoryFoods(data.foods));
+        console.log(data.foods);
+      }
+    };
+    apiReq();
+  }, [dispatch, location.search]);
 
   const handleAddToCart = (food) => {
     const isInCart = cartItems.some((item) => item._id === food._id);
@@ -31,11 +44,14 @@ const SpecificCategoryContainer = ({ location }) => {
   return (
     <div>
       <Container>
-        <SpecificCategoryComponent
-          foods={foods}
-          handleAddToCart={handleAddToCart}
-        />
-        ;
+        {status === "loading" && <Loader />}
+
+        {status === "success" && (
+          <SpecificCategoryComponent
+            foods={foods}
+            handleAddToCart={handleAddToCart}
+          />
+        )}
       </Container>
     </div>
   );

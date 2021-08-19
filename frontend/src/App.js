@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
+import Loader from "./components/loader/Loader";
 
 const HomeScreen = lazy(() => import("./screens/home-screen/home-container"));
 const CartScreen = lazy(() => import("./screens/cart-screen/cart-container"));
@@ -21,7 +22,7 @@ const App = () => {
     <div>
       <Router>
         <Header />
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <main>
             <Switch>
               <Route path="/v1/auth/signup" component={SignupScreen} />

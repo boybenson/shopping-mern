@@ -19,12 +19,13 @@ let foodSchema = new mongoose.Schema({
     required: true,
     default: 30,
   },
-  description: {
-    type: String,
-  },
   image: {
     type: String,
     required: true,
+  },
+  qtyToBuy: {
+    type: Number,
+    default: 1,
   },
 });
 
