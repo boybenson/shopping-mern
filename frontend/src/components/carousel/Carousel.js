@@ -13,8 +13,8 @@ const CarouselComponent = () => {
                 className="w-100 text-center"
                 src={item.img}
                 alt="slide photo"
-                fluid
                 thumbnail
+                fluid
               />
               <Carousel.Caption>
                 <h2>{item.name}</h2>

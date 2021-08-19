@@ -7,7 +7,7 @@ const CategoriesContainer = () => {
   return (
     <div className="py-2">
       <Container>
-        <h3 className="py-2">Popular Categories</h3>
+        <h3>Popular Categories</h3>
         <Row>
           {categoriesData.map((item, index) => {
             return (

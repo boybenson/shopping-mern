@@ -39,7 +39,11 @@ const cartSlice = createSlice({
     decreaseQty: (state, { payload }) => {
       const newCartItems = state.cartItems.map((item) => {
         if (item._id === payload._id) {
-          item.qtyToBuy -= 1;
+          if (item.qtyToBuy <= 1) {
+            item.qtyToBuy = 1;
+          } else {
+            item.qtyToBuy -= 1;
+          }
           return item;
         } else {
           return item;
