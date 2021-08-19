@@ -1,8 +1,21 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Button, Card, Col, Image, Row } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import toast from "react-hot-toast";
+import { addToCart } from "../../redux/cart/cart-slice";
 
 const SpecificCategoryComponent = ({ foods }) => {
+  const dispatch = useDispatch();
+  const { cartItems } = useSelector((state) => state.cart);
+
+  const handleAddToCart = (food) => {
+    if (cartItems.includes(food)) {
+      toast.error("food already in cart");
+    } else {
+      dispatch(addToCart(food));
+    }
+  };
   return (
     <>
       <NavLink to="/" className="my-2">
@@ -18,7 +31,12 @@ const SpecificCategoryComponent = ({ foods }) => {
                   <Card.Title>{food.name}</Card.Title>
                   <Card.Text>{food.shortDesc}</Card.Text>
                   <p className="fw-bold h5">GH₵ {food.price}</p>
-                  <Button variant="outline-dark">Add To Cart</Button>
+                  <Button
+                    variant="outline-dark"
+                    onClick={() => handleAddToCart(food)}
+                  >
+                    Add To Cart
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>

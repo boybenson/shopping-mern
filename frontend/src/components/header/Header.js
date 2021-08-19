@@ -57,7 +57,7 @@ const Header = () => {
               {!userInfo && (
                 <LinkContainer to="/v1/auth/signup">
                   <Nav.Link>
-                    <i class="fas fa-user-plus"> sign up </i>
+                    <i className="fas fa-user-plus"> sign up </i>
                   </Nav.Link>
                 </LinkContainer>
               )}
@@ -65,7 +65,15 @@ const Header = () => {
               {!userInfo && (
                 <LinkContainer to="/v1/auth/signin">
                   <Nav.Link>
-                    <i class="fas fa-sign-in-alt"> sign in </i>
+                    <i className="fas fa-sign-in-alt"> sign in </i>
+                  </Nav.Link>
+                </LinkContainer>
+              )}
+
+              {!userInfo && (
+                <LinkContainer to="/v1/cart">
+                  <Nav.Link>
+                    <i className="fas fa-shopping-basket"> cart </i>
                   </Nav.Link>
                 </LinkContainer>
               )}

@@ -6,6 +6,7 @@ export const foodsData = [
     shortDesc: "A variety of flavours with high fructose corn...",
     price: 20,
     duration: 30,
+    _id: 1,
   },
   {
     img: "/foodsImages/fruit-2.jpg",
@@ -14,6 +15,7 @@ export const foodsData = [
     shortDesc: "A variety of flavours with high fructose corn...",
     price: 30,
     duration: 15,
+    _id: 2,
   },
   {
     img: "/foodsImages/fruit-3.jpg",
@@ -22,6 +24,7 @@ export const foodsData = [
     shortDesc: "A variety of flavours with high fructose corn...",
     price: 10,
     duration: 45,
+    _id: 3,
   },
   {
     img: "/foodsImages/burger-1.jpg",
@@ -29,6 +32,7 @@ export const foodsData = [
     category: "burger",
     shortDesc: "The Best Classic Burgers in town...",
     price: 40,
+    _id: 4,
     duration: 20,
   },
   {
@@ -38,6 +42,7 @@ export const foodsData = [
     shortDesc: "The Best Classic Burgers in town...",
     price: 15,
     duration: 30,
+    _id: 5,
   },
   {
     img: "/foodsImages/burger-grill.jpg",
@@ -46,6 +51,7 @@ export const foodsData = [
     shortDesc: "The Best Classic Burgers in town...",
     price: 12,
     duration: 100,
+    _id: 6,
   },
   {
     img: "/foodsImages/chicken-khebab.jpg",
@@ -54,6 +60,7 @@ export const foodsData = [
     shortDesc: "Perfect Ghanaian khebab to make your day...",
     price: 250,
     duration: 120,
+    _id: 7,
   },
   {
     img: "/foodsImages/fried-chicken.jpg",
@@ -62,6 +69,7 @@ export const foodsData = [
     shortDesc: "Perfect Ghanaian khebab to make your day...",
     price: 10,
     duration: 70,
+    _id: 8,
   },
   {
     img: "/foodsImages/chicken-khebab.jpg",
@@ -70,6 +78,7 @@ export const foodsData = [
     shortDesc: "Perfect Ghanaian khebab to make your day...",
     price: 40,
     duration: 90,
+    _id: 9,
   },
   {
     img: "/foodsImages/chicken-fried.jpg",
@@ -78,6 +87,7 @@ export const foodsData = [
     shortDesc: "Perfect Ghanaian khebab to make your day...",
     price: 60,
     duration: 30,
+    _id: 10,
   },
   {
     img: "/foodsImages/pizza-boxes.jpg",
@@ -86,6 +96,7 @@ export const foodsData = [
     shortDesc: "Homemade pizza delivered fresh to your door....",
     price: 10,
     duration: 30,
+    _id: 11,
   },
   {
     img: "/foodsImages/pizza1.jpg",
@@ -94,5 +105,6 @@ export const foodsData = [
     shortDesc: "Homemade pizza delivered fresh to your door....",
     price: 40,
     duration: 30,
+    _id: 12,
   },
 ];
