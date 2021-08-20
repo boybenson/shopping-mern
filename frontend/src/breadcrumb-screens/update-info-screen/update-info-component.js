@@ -13,7 +13,6 @@ const UpdateInfoComponent = ({ userEmail, userName, userRole, userPhone }) => {
               type="text"
               placeholder="Enter user name"
               defaultValue={userName}
-              autoFocus
             />
           </Form.Group>
 
