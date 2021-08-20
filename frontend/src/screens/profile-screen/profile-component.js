@@ -1,33 +1,57 @@
 import React, { Suspense } from "react";
 import { Breadcrumb, Container } from "react-bootstrap";
 import { NavLink, Route, Switch } from "react-router-dom";
-import Loader from "../../components/loader/Loader";
-import { breadCrumbRoutes } from "../../routes/breadcrumb-view";
 
-const ProfileComponent = ({ location }) => {
+const ProfileComponent = ({ location, Loader, breadCrumbRoutes, userInfo }) => {
   return (
     <div>
       <Container className="">
         <h1>MY Account Information</h1>
         <Breadcrumb>
           {breadCrumbRoutes.map((item, index) => {
-            return (
-              <Breadcrumb.Item
-                key={index}
-                linkAs={NavLink}
-                linkProps={{ to: item.url }}
-                active={item.url === location.pathname}
-              >
-                {item.title}
-              </Breadcrumb.Item>
-            );
+            if (item.role === "both") {
+              return (
+                <Breadcrumb.Item
+                  key={index}
+                  linkAs={NavLink}
+                  linkProps={{ to: item.url }}
+                  active={item.url === location.pathname}
+                >
+                  {item.title}
+                </Breadcrumb.Item>
+              );
+            } else if (item.role === "customer") {
+              return (
+                <Breadcrumb.Item
+                  key={index}
+                  linkAs={NavLink}
+                  linkProps={{ to: item.url }}
+                  active={item.url === location.pathname}
+                >
+                  {item.title}
+                </Breadcrumb.Item>
+              );
+            } else {
+              return (
+                <Breadcrumb.Item
+                  key={index}
+                  linkAs={NavLink}
+                  linkProps={{ to: item.url }}
+                  active={item.url === location.pathname}
+                >
+                  {item.title}
+                </Breadcrumb.Item>
+              );
+            }
           })}
         </Breadcrumb>
         <hr />
         <Suspense fallback={<Loader />}>
           <Switch>
             {breadCrumbRoutes.map((item, index) => {
-              return <Route path={item.url} component={item.component} />;
+              return (
+                <Route path={item.url} component={item.component} key={index} />
+              );
             })}
           </Switch>
         </Suspense>

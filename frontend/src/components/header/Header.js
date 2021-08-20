@@ -9,7 +9,8 @@ import { signOut } from "../../redux/auth/signin-slice";
 const Header = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const userInfo = useSelector((state) => state.auth.userInfo);
+  const { userInfo } = useSelector((state) => state?.auth);
+  const { cartItems } = useSelector((state) => state?.cart);
 
   const logout = (e) => {
     e.preventDefault();
@@ -75,7 +76,8 @@ const Header = () => {
               {!userInfo && (
                 <LinkContainer to="/v1/cart">
                   <Nav.Link>
-                    <i className="fas fa-shopping-basket"> cart </i>
+                    <i className="fas fa-shopping-basket"> cart </i>{" "}
+                    <span>{cartItems.length}</span>
                   </Nav.Link>
                 </LinkContainer>
               )}
@@ -83,7 +85,8 @@ const Header = () => {
               {userInfo && userInfo.role === "customer" && (
                 <LinkContainer to="/v1/cart">
                   <Nav.Link>
-                    <i className="fas fa-shopping-basket"> cart </i>
+                    <i className="fas fa-shopping-basket"> cart </i>{" "}
+                    <span>{cartItems.length}</span>
                   </Nav.Link>
                 </LinkContainer>
               )}

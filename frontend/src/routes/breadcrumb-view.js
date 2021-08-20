@@ -18,15 +18,18 @@ export const breadCrumbRoutes = [
     url: "/v1/user/profile/update-information",
     title: "Update Info.",
     component: UpdateInfoScreen,
+    role: "both",
   },
   {
     url: "/v1/user/profile/my-orders",
     title: "My Orders",
     component: MyOrdersScreen,
+    role: "customer",
   },
   {
     url: "/v1/user/profile/favourite-dishes",
     title: "Favourite Dishes",
     component: FavouriteDishesScreen,
+    role: "customer",
   },
 ];
