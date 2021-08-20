@@ -25,7 +25,7 @@ const SpecificCategoryContainer = ({ location }) => {
       const data = unwrapResult(res);
       if (data.message === "success") {
         dispatch(fetchSPecificCategoryFoods(data.foods));
-        console.log(data.foods);
+      } else {
       }
     };
     apiReq();

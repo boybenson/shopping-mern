@@ -2,11 +2,11 @@ import jwt from "jsonwebtoken";
 import userModel from "../../models/users/userModel.js";
 
 export const VERIFY_JWT_TOKEN = async (req, res, next) => {
-  const accessToken = req.headers.authorization.split(" ")[1];
+  const accessToken = req?.headers?.authorization?.split(" ")[1];
   try {
     if (!accessToken) {
       res.status(401).json({
-        message: "invalid credentials, please log out",
+        message: "Invalid Access Token!",
       });
     } else {
       const decoded = jwt.verify(accessToken, process.env.JWT_TOKEN_KEY);
@@ -15,6 +15,7 @@ export const VERIFY_JWT_TOKEN = async (req, res, next) => {
           { _id: decoded.id },
           { password: 0 }
         );
+        req.user = user;
         next();
       }
     }

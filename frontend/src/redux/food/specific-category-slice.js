@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchSPecificCategoryFoodsRequest = createAsyncThunk(
-  "auth/userSigIn",
+  "specificCategory/fetchSPecificCategoryFoods",
   async (categoryName) => {
     const res = await axios.get(`/api/v1/foods/category/${categoryName}`);
     return res.data;
