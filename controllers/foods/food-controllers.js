@@ -6,7 +6,7 @@ export const POST_CREATE_A_FOOD = async (req, res, next) => {
   try {
     const newFood = await foodModel.create({
       name,
-      category,
+      category: category.toLowerCase(),
       price,
       cookingDuration,
       description,

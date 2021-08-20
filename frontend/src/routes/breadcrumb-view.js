@@ -32,4 +32,22 @@ export const breadCrumbRoutes = [
     component: FavouriteDishesScreen,
     role: "customer",
   },
+  {
+    url: "/v1/user/profile/favourite-dishes",
+    title: "Add a Food",
+    component: FavouriteDishesScreen,
+    role: "admin",
+  },
+  {
+    url: "/v1/user/profile/favourite-dishes",
+    title: "All Orders",
+    component: FavouriteDishesScreen,
+    role: "admin",
+  },
+  {
+    url: "/v1/user/profile/favourite-dishes",
+    title: "All Customers",
+    component: FavouriteDishesScreen,
+    role: "admin",
+  },
 ];

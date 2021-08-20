@@ -49,7 +49,11 @@ const SigninContainer = () => {
             })
           );
           dispatch(signin(data));
-          Cookies.set("accessToken", data.accessToken, { expires: 7 });
+          Cookies.set("accessToken", data.accessToken, {
+            expires: 7,
+            secure: false,
+            sameSite: "Strict",
+          });
           toast.success("login successful");
           history.push("/");
         } else {

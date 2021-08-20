@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { Breadcrumb, Container } from "react-bootstrap";
-import { NavLink, Route, Switch } from "react-router-dom";
+import { NavLink, Switch } from "react-router-dom";
+import ProtectedRoute from "../../routes/protected-routes";
 
 const ProfileComponent = ({ location, Loader, breadCrumbRoutes, userInfo }) => {
   return (
@@ -9,18 +10,7 @@ const ProfileComponent = ({ location, Loader, breadCrumbRoutes, userInfo }) => {
         <h1>MY Account Information</h1>
         <Breadcrumb>
           {breadCrumbRoutes.map((item, index) => {
-            if (item.role === "both") {
-              return (
-                <Breadcrumb.Item
-                  key={index}
-                  linkAs={NavLink}
-                  linkProps={{ to: item.url }}
-                  active={item.url === location.pathname}
-                >
-                  {item.title}
-                </Breadcrumb.Item>
-              );
-            } else if (item.role === "customer") {
+            if (item.role === "both" || item.role === userInfo.role) {
               return (
                 <Breadcrumb.Item
                   key={index}
@@ -32,16 +22,7 @@ const ProfileComponent = ({ location, Loader, breadCrumbRoutes, userInfo }) => {
                 </Breadcrumb.Item>
               );
             } else {
-              return (
-                <Breadcrumb.Item
-                  key={index}
-                  linkAs={NavLink}
-                  linkProps={{ to: item.url }}
-                  active={item.url === location.pathname}
-                >
-                  {item.title}
-                </Breadcrumb.Item>
-              );
+              return null;
             }
           })}
         </Breadcrumb>
@@ -50,7 +31,7 @@ const ProfileComponent = ({ location, Loader, breadCrumbRoutes, userInfo }) => {
           <Switch>
             {breadCrumbRoutes.map((item, index) => {
               return (
-                <Route path={item.url} component={item.component} key={index} />
+                <ProtectedRoute path={item.url} component={item.component} />
               );
             })}
           </Switch>

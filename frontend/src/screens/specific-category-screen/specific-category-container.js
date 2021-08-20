@@ -20,7 +20,7 @@ const SpecificCategoryContainer = ({ location }) => {
     const categoryName = location.search.slice(2);
     const apiReq = async () => {
       const res = await dispatch(
-        fetchSPecificCategoryFoodsRequest(categoryName)
+        fetchSPecificCategoryFoodsRequest(categoryName.toLowerCase())
       );
       const data = unwrapResult(res);
       if (data.message === "success") {

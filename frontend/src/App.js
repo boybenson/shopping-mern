@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Loader from "./components/loader/Loader";
+import ProtectedRoute from "./routes/protected-routes";
 
 const HomeScreen = lazy(() => import("./screens/home-screen/home-container"));
 const CartScreen = lazy(() => import("./screens/cart-screen/cart-container"));
@@ -29,7 +30,10 @@ const App = () => {
         <Suspense fallback={<Loader />}>
           <main>
             <Switch>
-              <Route path="/v1/user/profile" component={ProfileScreen} />
+              <ProtectedRoute
+                path="/v1/user/profile"
+                component={ProfileScreen}
+              />
               <Route path="/v1/auth/signup" component={SignupScreen} />
               <Route path="/v1/auth/signin" component={SigninScreen} />
               <Route path="/v1/category" component={SpecificCategoryScreen} />

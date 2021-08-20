@@ -50,7 +50,9 @@ const Header = () => {
                 <NavDropdown
                   title={<i className="far fa-user"> My Profile </i>}
                 >
-                  <NavDropdown.Item>My Orders</NavDropdown.Item>
+                  <LinkContainer to="/v1/user/profile/my-orders">
+                    <NavDropdown.Item>My Orders</NavDropdown.Item>
+                  </LinkContainer>
                   <LinkContainer to="/v1/user/profile/update-information">
                     <NavDropdown.Item>Update Information</NavDropdown.Item>
                   </LinkContainer>

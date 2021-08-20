@@ -60,7 +60,11 @@ const SignupContainer = () => {
               })
             );
             dispatch(signin(data));
-            Cookies.set("accessToken", data.accessToken, { expires: 7 });
+            Cookies.set("accessToken", data.accessToken, {
+              expires: 7,
+              secure: false,
+              sameSite: "Strict",
+            });
             toast.success("account created successfully");
             history.push("/");
           } else {
