@@ -49,8 +49,10 @@ const Header = () => {
                 <NavDropdown
                   title={<i className="far fa-user"> My Profile </i>}
                 >
-                  <NavDropdown.Item eventKey="4.1">My Orders</NavDropdown.Item>
-                  <NavDropdown.Item>Update Information</NavDropdown.Item>
+                  <NavDropdown.Item>My Orders</NavDropdown.Item>
+                  <LinkContainer to="/v1/user/profile">
+                    <NavDropdown.Item>Update Information</NavDropdown.Item>
+                  </LinkContainer>
                 </NavDropdown>
               )}
 

@@ -17,6 +17,10 @@ const SignupScreen = lazy(() =>
   import("./screens/signup-screen/signup-container")
 );
 
+const ProfileScreen = lazy(() =>
+  import("./screens/profile-screen/profile-container")
+);
+
 const App = () => {
   return (
     <div>
@@ -25,6 +29,7 @@ const App = () => {
         <Suspense fallback={<Loader />}>
           <main>
             <Switch>
+              <Route path="/v1/user/profile" component={ProfileScreen} />
               <Route path="/v1/auth/signup" component={SignupScreen} />
               <Route path="/v1/auth/signin" component={SigninScreen} />
               <Route path="/v1/category" component={SpecificCategoryScreen} />
