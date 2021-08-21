@@ -4,23 +4,8 @@ import { Toaster } from "react-hot-toast";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Loader from "./components/loader/Loader";
-import ProtectedRoute from "./routes/protected-routes";
-
-const HomeScreen = lazy(() => import("./screens/home-screen/home-container"));
-const CartScreen = lazy(() => import("./screens/cart-screen/cart-container"));
-const SpecificCategoryScreen = lazy(() =>
-  import("./screens/specific-category-screen/specific-category-container")
-);
-const SigninScreen = lazy(() =>
-  import("./screens/signin-screen/signin-container")
-);
-const SignupScreen = lazy(() =>
-  import("./screens/signup-screen/signup-container")
-);
-
-const ProfileScreen = lazy(() =>
-  import("./screens/profile-screen/profile-container")
-);
+import { mainViewRoutes } from "./routes/main-view";
+const ProtectedRoute = lazy(() => import("./routes/protected-routes"));
 
 const App = () => {
   return (
@@ -30,15 +15,21 @@ const App = () => {
         <Suspense fallback={<Loader />}>
           <main>
             <Switch>
-              <ProtectedRoute
-                path="/v1/user/profile"
-                component={ProfileScreen}
-              />
-              <Route path="/v1/auth/signup" component={SignupScreen} />
-              <Route path="/v1/auth/signin" component={SigninScreen} />
-              <Route path="/v1/category" component={SpecificCategoryScreen} />
-              <Route path="/v1/cart" component={CartScreen} />
-              <Route path="/" component={HomeScreen} />
+              {mainViewRoutes.map((route, index) => {
+                return route.protected ? (
+                  <ProtectedRoute
+                    component={route.component}
+                    path={route.url}
+                    key={index}
+                  />
+                ) : (
+                  <Route
+                    path={route.url}
+                    component={route.component}
+                    key={index}
+                  />
+                );
+              })}
             </Switch>
           </main>
         </Suspense>

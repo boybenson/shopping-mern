@@ -31,7 +31,11 @@ const ProfileComponent = ({ location, Loader, breadCrumbRoutes, userInfo }) => {
           <Switch>
             {breadCrumbRoutes.map((item, index) => {
               return (
-                <ProtectedRoute path={item.url} component={item.component} />
+                <ProtectedRoute
+                  path={item.url}
+                  component={item.component}
+                  key={index}
+                />
               );
             })}
           </Switch>
