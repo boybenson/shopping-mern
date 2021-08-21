@@ -13,7 +13,7 @@ export const userSignUpRequest = createAsyncThunk(
     const res = await axios.post(
       "/api/v1/auth/signup",
       {
-        // userName: userInfo?.userName,
+        fullName: userInfo?.fullName,
         email: userInfo?.email,
         password: userInfo?.password,
         phone: userInfo?.phone,

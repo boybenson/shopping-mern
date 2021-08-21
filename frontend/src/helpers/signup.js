@@ -1,6 +1,13 @@
-export const checkForAllInputs = (email, password, confirmPassword, phone) => {
+export const checkForAllInputs = (
+  email,
+  fullName,
+  password,
+  confirmPassword,
+  phone
+) => {
   if (
     email === "" ||
+    fullName === "" ||
     password === "" ||
     confirmPassword === "" ||
     phone === ""

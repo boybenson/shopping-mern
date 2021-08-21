@@ -16,6 +16,7 @@ const SignupContainer = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [phone, setPhone] = useState("");
+  const [fullName, setFullName] = useState("");
 
   const { errorInfo } = useSelector((state) => state.signup);
   const { userInfo } = useSelector((state) => state.auth);
@@ -30,12 +31,14 @@ const SignupContainer = () => {
   const onChangePassword = (e) => setPassword(e.target.value);
   const onChangeConfirmPassword = (e) => setConfirmPassword(e.target.value);
   const onChangePhone = (e) => setPhone(e.target.value);
+  const onChangeFullName = (e) => setFullName(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const allInputs = checkForAllInputs(
         email,
+        fullName,
         password,
         confirmPassword,
         phone
@@ -44,7 +47,7 @@ const SignupContainer = () => {
         const passwordsMatch = checkIfPasswordsMatch(password, confirmPassword);
         if (passwordsMatch) {
           const res = await dispatch(
-            userSignUpRequest({ email, password, phone })
+            userSignUpRequest({ email, fullName, password, phone })
           );
           const data = unwrapResult(res);
           if (data.status === 201) {
@@ -93,6 +96,7 @@ const SignupContainer = () => {
       onChangePassword={onChangePassword}
       onChangeConfirmPassword={onChangeConfirmPassword}
       onChangePhone={onChangePhone}
+      onChangeFullName={onChangeFullName}
       handleSubmit={handleSubmit}
     />
   );

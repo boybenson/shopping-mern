@@ -4,7 +4,7 @@ import { generateToken } from "../../helpers/generate-token.js";
 const maxAge = 3 * 24 * 60 * 60;
 
 export const POST_SIGNUP_USER = async (req, res, next) => {
-  const { userName, email, password, phone } = req.body;
+  const { userName, email, password, phone, fullName } = req.body;
 
   try {
     const isUser = await userModel.findOne({ email });
@@ -14,6 +14,7 @@ export const POST_SIGNUP_USER = async (req, res, next) => {
         phone,
         email,
         password,
+        userName: fullName,
       });
       const accessToken = generateToken(newUser._id, maxAge);
 

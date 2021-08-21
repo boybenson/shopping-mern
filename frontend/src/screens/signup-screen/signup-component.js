@@ -9,6 +9,7 @@ const SignupComponent = ({
   onChangeConfirmPassword,
   onChangePhone,
   handleSubmit,
+  onChangeFullName,
 }) => {
   const { status } = useSelector((state) => state.signup);
   return (
@@ -22,6 +23,16 @@ const SignupComponent = ({
               placeholder="ybenson96@gmail.com"
               size="lg"
               onChange={onChangeEmail}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Full Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="mills brown"
+              size="lg"
+              onChange={onChangeFullName}
             />
           </Form.Group>
 
