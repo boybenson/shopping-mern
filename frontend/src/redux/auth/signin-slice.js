@@ -22,7 +22,7 @@ export const userSignInRequest = createAsyncThunk(
       },
       config
     );
-    return res.data;
+    return res?.data;
   }
 );
 
@@ -35,7 +35,6 @@ const authSlice = createSlice({
   },
   reducers: {
     signin: (state, action) => {
-      localStorage.setItem("userInfo", JSON.stringify(action.payload));
       state.userInfo = action.payload;
       state.status = "success";
       state.errorInfo = null;

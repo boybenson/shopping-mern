@@ -18,7 +18,7 @@ export const POST_SIGNUP_USER = async (req, res, next) => {
       });
       const accessToken = generateToken(newUser._id, maxAge);
 
-      res.status(201).json({
+      res.json({
         userName: newUser.userName,
         userId: newUser._id,
         role: newUser.role,
@@ -47,7 +47,7 @@ export const POST_SIGNIN_USER = async (req, res, next) => {
     const isUser = await userModel.findOne({ email });
 
     if (!isUser) {
-      const err = new Error();
+      const err = new Error("incorrect email address");
       err.message = "incorrect email address";
       err.status = 404;
       next(err);

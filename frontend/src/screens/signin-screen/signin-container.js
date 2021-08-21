@@ -58,7 +58,7 @@ const SigninContainer = () => {
           history.push("/");
         } else {
           dispatch(signinError(data));
-          toast.error(errorInfo.message);
+          toast.error("incorrect email or password");
         }
       } else {
         toast.error("please fill all fields");

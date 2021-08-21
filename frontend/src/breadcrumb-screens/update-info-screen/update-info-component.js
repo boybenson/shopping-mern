@@ -1,18 +1,33 @@
 import React from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, Spinner } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const UpdateInfoComponent = ({ userEmail, userName, userRole, userPhone }) => {
+const UpdateInfoComponent = ({
+  userEmail,
+  userName,
+  userRole,
+  userPhone,
+  handleSubmit,
+  onChangePhone,
+  onChangeUserName,
+  onChangeEmail,
+  onChangePassword,
+  password,
+}) => {
+  const { status } = useSelector((state) => state.updateUser);
+
   return (
     <div>
       <Container className="mb-2">
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicuserName">
             <Form.Label>User Name</Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter user name"
               defaultValue={userName}
+              onChange={onChangeUserName}
             />
           </Form.Group>
 
@@ -23,6 +38,7 @@ const UpdateInfoComponent = ({ userEmail, userName, userRole, userPhone }) => {
               placeholder="Enter email"
               defaultValue={userEmail}
               disabled
+              onChange={onChangeEmail}
             />
           </Form.Group>
 
@@ -42,18 +58,30 @@ const UpdateInfoComponent = ({ userEmail, userName, userRole, userPhone }) => {
               type="tel"
               placeholder={userPhone}
               defaultValue={userPhone}
+              onChange={onChangePhone}
             />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="************" />
+            <Form.Control
+              type="password"
+              placeholder="************"
+              onChange={onChangePassword}
+              defaultValue={password}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3 d-flex justify-content-between">
-            <Button variant="outline-dark" type="submit">
-              Update Info
-            </Button>
+            {status === "loading" ? (
+              <Button variant="outline-dark" disabled>
+                <Spinner animation="border" /> processing...
+              </Button>
+            ) : (
+              <Button variant="outline-dark" type="submit">
+                Update User
+              </Button>
+            )}
             <NavLink to="/">
               <Button variant="danger" type="submit">
                 Go Back
