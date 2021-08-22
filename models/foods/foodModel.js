@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-let foodSchema = new mongoose.Schema({
+const foodSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -29,6 +29,6 @@ let foodSchema = new mongoose.Schema({
   },
 });
 
-let foodModel = mongoose.model("food", foodSchema);
+const foodModel = mongoose.model("food", foodSchema);
 
 export default foodModel;

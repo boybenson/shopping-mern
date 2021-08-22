@@ -5,7 +5,8 @@ export const VERIFY_JWT_TOKEN = async (req, res, next) => {
   const accessToken = req?.headers?.authorization?.split(" ")[1];
   try {
     if (!accessToken) {
-      res.status(401).json({
+      res.json({
+        status: 401,
         message: "Invalid Access Token!",
       });
     } else {

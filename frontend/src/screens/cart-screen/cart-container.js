@@ -9,7 +9,7 @@ import {
   decreaseQty,
 } from "../../redux/cart/cart-slice";
 
-const CartContainer = () => {
+const CartContainer = ({ history }) => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
 
@@ -29,6 +29,9 @@ const CartContainer = () => {
     dispatch(decreaseQty(item));
   };
 
+  const handleGoBack = () => history.goBack();
+
+  const handleCheckout = (e) => {};
   return (
     <CartComponent
       cartItems={cartItems}
@@ -36,6 +39,8 @@ const CartContainer = () => {
       handleRemoveFromCart={handleRemoveFromCart}
       increaseQty={handleIncreaseQty}
       decreaseQty={handleDecreaseQty}
+      handleCheckout={handleCheckout}
+      handleGoBack={handleGoBack}
     />
   );
 };

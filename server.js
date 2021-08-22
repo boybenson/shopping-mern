@@ -8,6 +8,7 @@ import foodRoute from "./routes/foods/food-route.js";
 import connectDatabase from "./config/database.js";
 import { handleError } from "./middlewares/error-handler/errorHandler.js";
 import userRoute from "./routes/users/user-route.js";
+import orderRoute from "./routes/orders/order-route.js";
 
 const app = express();
 const port = process.env.PORT;
@@ -22,6 +23,7 @@ if (db === true) {
   app.use("/api/v1/auth", authRoute);
   app.use("/api/v1/foods", foodRoute);
   app.use("/api/v1/user", userRoute);
+  app.use("/api/v1/order", orderRoute);
 
   app.use(handleError);
 

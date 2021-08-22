@@ -12,7 +12,7 @@ import {
 } from "../../redux/user/update-user-slice";
 import { signin } from "../../redux/auth/signin-slice";
 
-const UpdateInfoContainer = () => {
+const UpdateInfoContainer = ({ history }) => {
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -25,6 +25,8 @@ const UpdateInfoContainer = () => {
   const onChangeUserName = (e) => setUserName(e.target.value);
   const onChangePhone = (e) => setPhone(e.target.value);
   const onChangePassword = (e) => setPassword(e.target.value);
+
+  const handleGoBack = () => history.goBack();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -75,6 +77,7 @@ const UpdateInfoContainer = () => {
       onChangeEmail={onChangeEmail}
       onChangePassword={onChangePassword}
       password={password}
+      handleGoBack={handleGoBack}
     />
   );
 };

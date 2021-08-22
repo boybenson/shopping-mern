@@ -37,6 +37,10 @@ const CreateFoodContainer = () => {
         if (data.status === 201) {
           dispatch(createFood(data.newFood));
           toast.success("food addedd successfully");
+          setName("");
+          setPrice("");
+          setCategory("");
+          setImage("");
         } else {
           dispatch(createFoodError(data));
           toast.error("Error Creating Food");
@@ -44,7 +48,10 @@ const CreateFoodContainer = () => {
       } else {
         toast.error("please fill all fields");
       }
-    } catch (error) {}
+    } catch (error) {
+      dispatch(createFoodError(error?.message));
+      toast.error(error?.message);
+    }
   };
 
   return (

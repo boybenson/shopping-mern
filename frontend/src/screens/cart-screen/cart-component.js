@@ -7,6 +7,7 @@ import {
   Image,
   Button,
   ListGroup,
+  Form,
 } from "react-bootstrap";
 
 const CartComponent = ({
@@ -15,12 +16,13 @@ const CartComponent = ({
   handleRemoveFromCart,
   increaseQty,
   decreaseQty,
+  handleGoBack,
 }) => {
   return (
     <div>
       <Container>
         <Row>
-          <Col md={8}>
+          <Col md={8} className="py-2">
             <Button onClick={handleClearCart} variant="outline-dark">
               <i className="fas fa-trash"> Clear cart </i>
             </Button>
@@ -66,7 +68,7 @@ const CartComponent = ({
               );
             })}
           </Col>
-          <Col md={4}>
+          <Col md={4} className="py-2">
             <Card>
               <ListGroup variant="flush">
                 <ListGroup.Item>
@@ -89,14 +91,50 @@ const CartComponent = ({
                 </ListGroup.Item>
 
                 <ListGroup.Item>
-                  <Button
-                    type="button"
-                    className="btn-block"
-                    disabled={cartItems.length === 0}
-                    variant="dark"
-                  >
-                    Proceed To Checkout
-                  </Button>
+                  <Form>
+                    <Form.Group
+                      className="mb-3"
+                      controlId="formBasicdeliveryType"
+                    >
+                      <Form.Label>Delivery Address</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="please enter accurate location"
+                        required
+                      />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Label>Payment Method</Form.Label>
+                      <Form.Select aria-label="Default select example">
+                        <option>Select Payment Method</option>
+                        <option value="1">Cash On Delivery</option>
+                        <option value="2">Mobile Money</option>
+                        <option value="3">
+                          Bank Transfer (Not Available Now)
+                        </option>
+                      </Form.Select>
+                    </Form.Group>
+
+                    <Form.Group className="d-flex justify-content-between">
+                      <Button
+                        type="submit"
+                        className="btn-block"
+                        disabled={cartItems.length === 0}
+                        variant="dark"
+                      >
+                        <i class="fas fa-credit-card"> Checkout </i>
+                      </Button>
+
+                      <Button
+                        className="btn-block"
+                        variant="danger"
+                        onClick={handleGoBack}
+                      >
+                        <i class="fas fa-arrow-left"> Go Back </i>
+                      </Button>
+                    </Form.Group>
+                  </Form>
                 </ListGroup.Item>
               </ListGroup>
             </Card>

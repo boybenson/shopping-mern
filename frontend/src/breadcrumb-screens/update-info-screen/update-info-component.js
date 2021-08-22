@@ -14,6 +14,7 @@ const UpdateInfoComponent = ({
   onChangeEmail,
   onChangePassword,
   password,
+  handleGoBack,
 }) => {
   const { status } = useSelector((state) => state.updateUser);
 
@@ -82,11 +83,10 @@ const UpdateInfoComponent = ({
                 Update User
               </Button>
             )}
-            <NavLink to="/">
-              <Button variant="danger" type="submit">
-                Go Back
-              </Button>
-            </NavLink>
+
+            <Button variant="danger" onClick={handleGoBack}>
+              <i class="fas fa-arrow-left"> Go Back </i>
+            </Button>
           </Form.Group>
         </Form>
       </Container>
