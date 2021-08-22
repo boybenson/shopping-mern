@@ -16,6 +16,7 @@ const SigninComponent = ({ onChangeEmail, onChangePassword, handleSubmit }) => {
               placeholder="ybenson96@gmail.com"
               size="lg"
               onChange={onChangeEmail}
+              required
             />
           </Form.Group>
 
@@ -26,6 +27,7 @@ const SigninComponent = ({ onChangeEmail, onChangePassword, handleSubmit }) => {
               placeholder="*****************"
               size="lg"
               onChange={onChangePassword}
+              required
             />
           </Form.Group>
 

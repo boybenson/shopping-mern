@@ -13,9 +13,10 @@ export const POST_CREATE_A_FOOD = async (req, res, next) => {
       image: imageUrl,
     });
 
-    res.status(201).json({
+    res.json({
       message: "food created successfully",
       newFood,
+      status: 201,
     });
   } catch (error) {
     const err = new Error(error.message);

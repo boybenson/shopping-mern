@@ -13,6 +13,14 @@ const MyOrdersScreen = lazy(() =>
   import("../breadcrumb-screens/my-orders/my-orders-container")
 );
 
+const AllCustomersScreen = lazy(() =>
+  import("../breadcrumb-screens/all-customers-screen/all-customers-container")
+);
+
+const CreateFoodScreen = lazy(() =>
+  import("../breadcrumb-screens/create-food-screen/create-food-container")
+);
+
 export const breadCrumbRoutes = [
   {
     url: "/v1/user/profile/update-information",
@@ -33,9 +41,9 @@ export const breadCrumbRoutes = [
     role: "customer",
   },
   {
-    url: "/v1/user/profile/favourite-dishes",
+    url: "/v1/user/profile/create-food",
     title: "Add a Food",
-    component: FavouriteDishesScreen,
+    component: CreateFoodScreen,
     role: "admin",
   },
   {
@@ -45,9 +53,9 @@ export const breadCrumbRoutes = [
     role: "admin",
   },
   {
-    url: "/v1/user/profile/favourite-dishes",
+    url: "/v1/user/profile/all-customer",
     title: "All Customers",
-    component: FavouriteDishesScreen,
+    component: AllCustomersScreen,
     role: "admin",
   },
 ];

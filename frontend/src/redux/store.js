@@ -4,6 +4,7 @@ import { default as signupReducer } from "./auth/signup-slice";
 import { default as cartReducer } from "./cart/cart-slice";
 import { default as specificCategoryReducer } from "./food/specific-category-slice";
 import { default as updateUserReducer } from "./user/update-user-slice";
+import { default as createFoodReducer } from "./food/create-food-slice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     signup: signupReducer,
     specificCategory: specificCategoryReducer,
     updateUser: updateUserReducer,
+    createFood: createFoodReducer,
   },
 });
 

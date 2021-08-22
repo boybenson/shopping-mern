@@ -23,6 +23,7 @@ const SignupComponent = ({
               placeholder="ybenson96@gmail.com"
               size="lg"
               onChange={onChangeEmail}
+              required
             />
           </Form.Group>
 
@@ -33,6 +34,7 @@ const SignupComponent = ({
               placeholder="mills brown"
               size="lg"
               onChange={onChangeFullName}
+              required
             />
           </Form.Group>
 
@@ -43,6 +45,7 @@ const SignupComponent = ({
               placeholder="*****************"
               size="lg"
               onChange={onChangePassword}
+              required
             />
           </Form.Group>
 
@@ -53,6 +56,7 @@ const SignupComponent = ({
               placeholder="*****************"
               size="lg"
               onChange={onChangeConfirmPassword}
+              required
             />
           </Form.Group>
 
@@ -63,6 +67,7 @@ const SignupComponent = ({
               placeholder="0546949655"
               size="lg"
               onChange={onChangePhone}
+              required
             />
           </Form.Group>
 
