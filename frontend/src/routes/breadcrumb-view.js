@@ -24,7 +24,7 @@ const CreateFoodScreen = lazy(() =>
 export const breadCrumbRoutes = [
   {
     url: "/v1/user/profile/update-information",
-    title: "Update Info.",
+    title: "My Profile",
     component: UpdateInfoScreen,
     role: "both",
   },

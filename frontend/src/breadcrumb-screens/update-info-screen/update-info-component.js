@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Container, Form, Spinner } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const UpdateInfoComponent = ({
