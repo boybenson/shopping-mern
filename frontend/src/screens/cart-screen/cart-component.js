@@ -1,4 +1,5 @@
 import React from "react";
+import { PaystackButton } from "react-paystack";
 import {
   Container,
   Row,
@@ -8,9 +9,11 @@ import {
   Button,
   ListGroup,
   Form,
+  Spinner,
 } from "react-bootstrap";
 
 const CartComponent = ({
+  paymentMethod,
   cartItems,
   handleClearCart,
   handleRemoveFromCart,
@@ -20,6 +23,9 @@ const CartComponent = ({
   handleGoBack,
   onChangeAddress,
   onChangePaymentMethod,
+  totalPrice,
+  payStackProps,
+  status,
 }) => {
   return (
     <div>
@@ -83,62 +89,65 @@ const CartComponent = ({
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <strong>Total Price : </strong>GH₵{" "}
-                  {cartItems.length === 0
-                    ? ` 0`
-                    : cartItems
-                        .reduce(
-                          (acc, item) => acc + item.qtyToBuy * item.price,
-                          10
-                        )
-                        .toFixed(2)}
+                  {cartItems.length === 0 ? ` 0` : totalPrice}
                 </ListGroup.Item>
 
                 <ListGroup.Item>
-                  <Form onSubmit={handleCheckout}>
-                    <Form.Group
-                      className="mb-3"
-                      controlId="formBasicdeliveryType"
-                    >
-                      <Form.Label>Delivery Address</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="please enter accurate location"
-                        required
-                        onChange={onChangeAddress}
+                  <Form.Group
+                    className="mb-3"
+                    controlId="formBasicdeliveryType"
+                  >
+                    <Form.Label>Delivery Address</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="please enter accurate location"
+                      required
+                      onChange={onChangeAddress}
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Payment Method</Form.Label>
+                    <Form.Select onChange={onChangePaymentMethod}>
+                      <option>Select Payment Method</option>
+                      <option value="cashOnDelivery">Cash On Delivery</option>
+                      <option value="mobileMoney">Mobile Money</option>
+                      <option value="3" disabled>
+                        Bank Transfer (Not Available Now)
+                      </option>
+                    </Form.Select>
+                  </Form.Group>
+
+                  <Form.Group className="d-flex justify-content-between">
+                    {paymentMethod === "mobileMoney" ? (
+                      <PaystackButton
+                        {...payStackProps}
+                        className="btn btn-dark"
                       />
-                    </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label>Payment Method</Form.Label>
-                      <Form.Select onChange={onChangePaymentMethod}>
-                        <option>Select Payment Method</option>
-                        <option value="cashOnDelivery">Cash On Delivery</option>
-                        <option value="mobileMoney">Mobile Money</option>
-                        <option value="3" disabled>
-                          Bank Transfer (Not Available Now)
-                        </option>
-                      </Form.Select>
-                    </Form.Group>
-
-                    <Form.Group className="d-flex justify-content-between">
+                    ) : (
                       <Button
                         type="submit"
                         className="btn-block"
                         disabled={cartItems.length === 0}
                         variant="dark"
+                        onClick={handleCheckout}
                       >
-                        <i className="fas fa-credit-card"> Checkout </i>
+                        {status === "loading" ? (
+                          <Spinner animation="border" />
+                        ) : (
+                          <i className="fas fa-credit-card"> Place Order </i>
+                        )}
                       </Button>
+                    )}
 
-                      <Button
-                        className="btn-block"
-                        variant="danger"
-                        onClick={handleGoBack}
-                      >
-                        <i className="fas fa-arrow-left"> Go Back </i>
-                      </Button>
-                    </Form.Group>
-                  </Form>
+                    <Button
+                      className="btn-block"
+                      variant="danger"
+                      onClick={handleGoBack}
+                    >
+                      <i className="fas fa-arrow-left"> Go Back </i>
+                    </Button>
+                  </Form.Group>
                 </ListGroup.Item>
               </ListGroup>
             </Card>

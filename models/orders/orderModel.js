@@ -14,7 +14,6 @@ const orderSchema = new mongoose.Schema({
 
   deliveryFee: {
     type: Number,
-    required: true,
     default: 10.0,
   },
 

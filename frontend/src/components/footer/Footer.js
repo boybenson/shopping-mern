@@ -5,8 +5,7 @@ const Footer = () => {
   return (
     <footer>
       <Container className="text-center">
-        <small>Made With Love By </small>
-        <small>Benson</small> <small>{new Date().getFullYear()}</small>
+        <small>Fast Food ©</small> <small>{new Date().getFullYear()}</small>
       </Container>
     </footer>
   );

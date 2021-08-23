@@ -6,6 +6,7 @@ import { default as specificCategoryReducer } from "./food/specific-category-sli
 import { default as updateUserReducer } from "./user/update-user-slice";
 import { default as createFoodReducer } from "./food/create-food-slice";
 import { default as checkoutReducer } from "./checkout/checkout-slice";
+import { default as myOrdersReducer } from "./order/my-orders-slice";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     updateUser: updateUserReducer,
     createFood: createFoodReducer,
     checkout: checkoutReducer,
+    myOrders: myOrdersReducer,
   },
 });
 
