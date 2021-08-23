@@ -14,11 +14,11 @@ const FavouritesDishesComponent = () => {
 
         <div className="py-4 my-4">
           <a href="https://wa.me/233546949655">WhatsApp</a>{" "}
-          <i class="fab fa-whatsapp"></i> ||{" "}
+          <i className="fab fa-whatsapp"></i> ||{" "}
           <a href="mailto:ybenson96@gmail.com">Email</a>{" "}
-          <i class="fas fa-envelope"></i> ||{" "}
+          <i className="fas fa-envelope"></i> ||{" "}
           <a href="https://twitter.com/boybenson_">Twitter</a>{" "}
-          <i class="fab fa-twitter"></i> ||{" "}
+          <i className="fab fa-twitter"></i> ||{" "}
         </div>
       </Container>
     </div>

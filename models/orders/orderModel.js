@@ -20,7 +20,7 @@ const orderSchema = new mongoose.Schema({
 
   address: {
     type: String,
-    required: true,
+    default: "accra",
   },
 
   foods: [{}],

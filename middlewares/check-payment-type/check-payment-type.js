@@ -17,6 +17,8 @@ export const CHECK_PAYMENT_TYPE = async (req, res, next) => {
     const data = {
       email: customer.email,
       amount: totalPrice * 100,
+      channels: ["mobile_money"],
+      callback_url: "http://localhost:8080/api/v1/payment/verify-transaction",
     };
 
     const initializePayMentRes = await axios.post(

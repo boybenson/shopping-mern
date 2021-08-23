@@ -84,7 +84,7 @@ const UpdateInfoComponent = ({
             )}
 
             <Button variant="danger" onClick={handleGoBack}>
-              <i class="fas fa-arrow-left"> Go Back </i>
+              <i className="fas fa-arrow-left"> Go Back </i>
             </Button>
           </Form.Group>
         </Form>

@@ -16,7 +16,10 @@ const CartComponent = ({
   handleRemoveFromCart,
   increaseQty,
   decreaseQty,
+  handleCheckout,
   handleGoBack,
+  onChangeAddress,
+  onChangePaymentMethod,
 }) => {
   return (
     <div>
@@ -91,7 +94,7 @@ const CartComponent = ({
                 </ListGroup.Item>
 
                 <ListGroup.Item>
-                  <Form>
+                  <Form onSubmit={handleCheckout}>
                     <Form.Group
                       className="mb-3"
                       controlId="formBasicdeliveryType"
@@ -101,16 +104,17 @@ const CartComponent = ({
                         type="text"
                         placeholder="please enter accurate location"
                         required
+                        onChange={onChangeAddress}
                       />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>Payment Method</Form.Label>
-                      <Form.Select aria-label="Default select example">
+                      <Form.Select onChange={onChangePaymentMethod}>
                         <option>Select Payment Method</option>
-                        <option value="1">Cash On Delivery</option>
-                        <option value="2">Mobile Money</option>
-                        <option value="3">
+                        <option value="cashOnDelivery">Cash On Delivery</option>
+                        <option value="mobileMoney">Mobile Money</option>
+                        <option value="3" disabled>
                           Bank Transfer (Not Available Now)
                         </option>
                       </Form.Select>
@@ -123,7 +127,7 @@ const CartComponent = ({
                         disabled={cartItems.length === 0}
                         variant="dark"
                       >
-                        <i class="fas fa-credit-card"> Checkout </i>
+                        <i className="fas fa-credit-card"> Checkout </i>
                       </Button>
 
                       <Button
@@ -131,7 +135,7 @@ const CartComponent = ({
                         variant="danger"
                         onClick={handleGoBack}
                       >
-                        <i class="fas fa-arrow-left"> Go Back </i>
+                        <i className="fas fa-arrow-left"> Go Back </i>
                       </Button>
                     </Form.Group>
                   </Form>

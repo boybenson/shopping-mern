@@ -5,6 +5,7 @@ import { default as cartReducer } from "./cart/cart-slice";
 import { default as specificCategoryReducer } from "./food/specific-category-slice";
 import { default as updateUserReducer } from "./user/update-user-slice";
 import { default as createFoodReducer } from "./food/create-food-slice";
+import { default as checkoutReducer } from "./checkout/checkout-slice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     specificCategory: specificCategoryReducer,
     updateUser: updateUserReducer,
     createFood: createFoodReducer,
+    checkout: checkoutReducer,
   },
 });
 
