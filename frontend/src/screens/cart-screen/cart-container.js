@@ -78,7 +78,7 @@ const CartContainer = ({ history }) => {
   const payStackProps = {
     email: userInfo?.email,
     amount: totalPrice * 100,
-    publicKey: "pk_test_1f8a48067da5793e978f1b1d07e1feea71c756f3",
+    publicKey: process.env.REACT_APP_PAYSTACK_KEY,
     text: `Pay GH₵ ${totalPrice}`,
     currency: "GHS",
     channels: ["mobile_money"],
