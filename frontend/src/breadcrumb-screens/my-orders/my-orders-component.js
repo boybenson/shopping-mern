@@ -1,5 +1,6 @@
 import React from "react";
 import { Alert, Button, Table } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 const MyOrderComponent = ({ customerOrders, handleGoBack }) => {
   return (
@@ -11,7 +12,8 @@ const MyOrderComponent = ({ customerOrders, handleGoBack }) => {
 
       {customerOrders.length === 0 ? (
         <Alert variant="info">
-          <span className="mt-2">sorry! You Currently Have No Orders</span>
+          <span className="mt-2">sorry! You Currently Have No Orders</span>{" "}
+          <br></br>
           <Button
             onClick={handleGoBack}
             className="mt-2"
@@ -34,16 +36,18 @@ const MyOrderComponent = ({ customerOrders, handleGoBack }) => {
           <tbody>
             {customerOrders.map((order, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   <td>{`${order._id.slice(4, 9)}...`}</td>
                   <td>{order.totalPrice}</td>
                   <td>
                     {order?.paymentMethod === "mobileMoney" ? "MoMo" : "COD"}
                   </td>
                   <td>
-                    <Button variant="outline-dark" size="sm">
-                      view More
-                    </Button>
+                    <NavLink to={`/v1/user/profile/order/${order._id}`}>
+                      <Button variant="outline-dark" size="sm">
+                        view More
+                      </Button>
+                    </NavLink>
                   </td>
                 </tr>
               );

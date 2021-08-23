@@ -21,6 +21,10 @@ const CreateFoodScreen = lazy(() =>
   import("../breadcrumb-screens/create-food-screen/create-food-container")
 );
 
+const SpecificOrderScreen = lazy(() =>
+  import("../breadcrumb-screens/specific-order-screen/specific-order-container")
+);
+
 export const breadCrumbRoutes = [
   {
     url: "/v1/user/profile/update-information",
@@ -57,5 +61,9 @@ export const breadCrumbRoutes = [
     title: "All Customers",
     component: AllCustomersScreen,
     role: "admin",
+  },
+  {
+    url: "/v1/user/profile/order/:orderId",
+    component: SpecificOrderScreen,
   },
 ];

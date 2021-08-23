@@ -10,7 +10,7 @@ const ProfileComponent = ({ location, Loader, breadCrumbRoutes, userInfo }) => {
         <h1>MY Account Information</h1>
         <Breadcrumb>
           {breadCrumbRoutes.map((item, index) => {
-            if (item.role === "both" || item.role === userInfo.role) {
+            if (item?.role === "both" || item?.role === userInfo.role) {
               return (
                 <Breadcrumb.Item
                   key={index}
@@ -18,7 +18,7 @@ const ProfileComponent = ({ location, Loader, breadCrumbRoutes, userInfo }) => {
                   linkProps={{ to: item.url }}
                   active={item.url === location.pathname}
                 >
-                  {item.title}
+                  {item.title ?? ""}
                 </Breadcrumb.Item>
               );
             } else {

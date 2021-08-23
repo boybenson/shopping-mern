@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  GET_A_SPECIFIC_ORDER,
   GET_FETCH_ALL_ORDERS,
   GET_FETCH_MY_ORDERS,
   POST_CREATE_AN_ORDER,
@@ -12,5 +13,11 @@ orderRoute.post("/create-order", VERIFY_JWT_TOKEN, POST_CREATE_AN_ORDER);
 orderRoute.get("/fetch-my-orders", VERIFY_JWT_TOKEN, GET_FETCH_MY_ORDERS);
 
 orderRoute.get("/fetch-all-orders", VERIFY_JWT_TOKEN, GET_FETCH_ALL_ORDERS);
+
+orderRoute.get(
+  "/fetch-a-specific-order/:orderId",
+  VERIFY_JWT_TOKEN,
+  GET_A_SPECIFIC_ORDER
+);
 
 export default orderRoute;

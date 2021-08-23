@@ -37,3 +37,13 @@ export const GET_FETCH_ALL_ORDERS = async (req, res, next) => {
     orders,
   });
 };
+
+export const GET_A_SPECIFIC_ORDER = async (req, res, next) => {
+  const orderDetails = await orderModel
+    .findOne({ _id: req?.params?.orderId })
+    .populate("customer", { password: 0 });
+  res.json({
+    status: 200,
+    orderDetails,
+  });
+};
