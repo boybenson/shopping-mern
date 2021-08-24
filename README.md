@@ -5,6 +5,7 @@
 - [Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started)
 - [React Bootstrap](https://react-bootstrap.github.io/)
 - [Multer](https://www.npmjs.com/package/multer) and [Cloudinary](https://cloudinary.com/) for file uploads.
+- [Paystack Api](https://paystack.com/) to handle payments
 - [Mongodb](https://www.mongodb.com/) with [Mongoose](https://mongoosejs.com/)
 - [Express Js](https://expressjs.com/)
 - [Jest Js](https://jestjs.io/)
