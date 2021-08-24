@@ -1,8 +1,21 @@
 import React from "react";
-import { Alert, Card, ListGroup, Col, Row } from "react-bootstrap";
+import {
+  Alert,
+  Card,
+  ListGroup,
+  Col,
+  Row,
+  Button,
+  Spinner,
+} from "react-bootstrap";
 import { calcDate } from "../../helpers/date";
 
-const SpecificOrderComponent = ({ order }) => {
+const SpecificOrderComponent = ({
+  order,
+  userInfo,
+  handleMarkAsDelivered,
+  deliverOrderStatus,
+}) => {
   return (
     <div>
       <Row>
@@ -13,7 +26,7 @@ const SpecificOrderComponent = ({ order }) => {
                 <small className="fw-bold" style={{ fontSize: "18px" }}>
                   Order ID :{" "}
                 </small>
-                <small className="ml-4">{`${order._id}`}</small>
+                <small className="ml-4">{`${order?._id}`}</small>
               </ListGroup.Item>
 
               <ListGroup.Item className="mt-2">
@@ -91,7 +104,7 @@ const SpecificOrderComponent = ({ order }) => {
 
               {order.foods.map((food, index) => {
                 return (
-                  <ListGroup.Item>
+                  <ListGroup.Item key={index}>
                     <small className="fw-bold" style={{ fontSize: "18px" }}>
                       {food.name} :
                     </small>{" "}
@@ -103,6 +116,20 @@ const SpecificOrderComponent = ({ order }) => {
               })}
             </Card>
           </ListGroup>
+          {userInfo?.role === "admin" && (
+            <Button
+              variant="outline-dark"
+              className="mt-4 w-100"
+              disabled={order?.isDelivered}
+              onClick={() => handleMarkAsDelivered(order?._id)}
+            >
+              {deliverOrderStatus === "loading" ? (
+                <Spinner animation="border" role="status" />
+              ) : (
+                <i className="fas fa-truck"> Mark As Delivered </i>
+              )}
+            </Button>
+          )}
         </Col>
       </Row>
     </div>

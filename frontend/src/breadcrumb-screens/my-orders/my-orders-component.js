@@ -31,7 +31,7 @@ const MyOrderComponent = ({ customerOrders }) => {
             {customerOrders.map((order, index) => {
               return (
                 <tr key={index}>
-                  <td>{`${order._id.slice(4, 9)}...`}</td>
+                  <td>{`${order._id.slice(0, 5)}...`}</td>
                   <td>{order.totalPrice}</td>
                   <td>
                     {order?.paymentMethod === "mobileMoney" ? "MoMo" : "COD"}

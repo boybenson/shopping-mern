@@ -47,3 +47,17 @@ export const GET_A_SPECIFIC_ORDER = async (req, res, next) => {
     orderDetails,
   });
 };
+
+export const ORDER_DELIVERED = async (req, res, next) => {
+  const filter = { _id: req?.params?.orderId };
+  const update = { isDelivered: true };
+  const deliveredOrder = await orderModel.findOneAndUpdate(filter, update, {
+    new: true,
+  });
+  // .populate("customer", { password: 0 });
+
+  res.json({
+    status: 200,
+    deliveredOrder,
+  });
+};

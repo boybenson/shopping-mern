@@ -25,6 +25,10 @@ const SpecificOrderScreen = lazy(() =>
   import("../breadcrumb-screens/specific-order-screen/specific-order-container")
 );
 
+const AllOrdersScreen = lazy(() =>
+  import("../breadcrumb-screens/all-orders-screen/all-orders-container")
+);
+
 export const breadCrumbRoutes = [
   {
     url: "/v1/user/profile/update-information",
@@ -51,9 +55,9 @@ export const breadCrumbRoutes = [
     role: "admin",
   },
   {
-    url: "/v1/user/profile/favourite-dishes",
+    url: "/v1/user/profile/all-orders",
     title: "All Orders",
-    component: FavouriteDishesScreen,
+    component: AllOrdersScreen,
     role: "admin",
   },
   {

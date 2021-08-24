@@ -4,14 +4,23 @@ import SpecificOrderComponent from "./specific-order-component";
 import { Button, Container } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../../components/loader/Loader";
+import toast from "react-hot-toast";
 import {
   fetchSpecificOrder,
   fetchSpecificOrderRequest,
 } from "../../redux/order/specific-order-slice";
+import {
+  deliverOrder,
+  deliverOrderRequest,
+} from "../../redux/order/deliver-order-slice";
 
 const SpecificOrderContainer = ({ match, history }) => {
   const dispatch = useDispatch();
   const { status, orderDetails } = useSelector((state) => state.specificOrder);
+  const { status: deliverOrderStatus } = useSelector(
+    (state) => state.deliverOrder
+  );
+  const { userInfo } = useSelector((state) => state.auth);
   const handleGoBack = () => history.goBack();
 
   useEffect(() => {
@@ -28,6 +37,16 @@ const SpecificOrderContainer = ({ match, history }) => {
     apiReq();
   }, [match?.params?.orderId, dispatch]);
 
+  const handleMarkAsDelivered = async (orderId) => {
+    const res = await dispatch(deliverOrderRequest(orderId));
+    const data = unwrapResult(res);
+    if (data.status === 200) {
+      dispatch(deliverOrder(data));
+      history.goBack();
+      toast.success("food delivered, hurray!!");
+    }
+  };
+
   return (
     <div>
       <Container>
@@ -38,7 +57,12 @@ const SpecificOrderContainer = ({ match, history }) => {
         {status === "loading" && <Loader />}
 
         {status === "success" && (
-          <SpecificOrderComponent order={orderDetails?.orderDetails} />
+          <SpecificOrderComponent
+            order={orderDetails?.orderDetails}
+            userInfo={userInfo}
+            handleMarkAsDelivered={handleMarkAsDelivered}
+            deliverOrderStatus={deliverOrderStatus}
+          />
         )}
       </Container>
     </div>

@@ -2,10 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const fetchMyOrdersFromLocalStorage = localStorage.getItem("myOrders")
-  ? JSON.parse(localStorage.getItem("myOrders"))
-  : [];
-
 export const fetchMyOrdersRequest = createAsyncThunk(
   "myOrders/fetchMyOrders",
   async () => {
@@ -23,7 +19,7 @@ export const fetchMyOrdersRequest = createAsyncThunk(
 const myOrdersSlice = createSlice({
   name: "myOrders",
   initialState: {
-    myOrders: fetchMyOrdersFromLocalStorage,
+    myOrders: null,
     status: null,
     errorInfo: null,
   },

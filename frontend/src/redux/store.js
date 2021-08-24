@@ -8,6 +8,8 @@ import { default as createFoodReducer } from "./food/create-food-slice";
 import { default as checkoutReducer } from "./checkout/checkout-slice";
 import { default as myOrdersReducer } from "./order/my-orders-slice";
 import { default as specificOrderReducer } from "./order/specific-order-slice";
+import { default as allOrdersReducer } from "./order/all-orders-slice";
+import { default as deliverOrderReducer } from "./order/deliver-order-slice";
 
 const store = configureStore({
   reducer: {
@@ -20,6 +22,8 @@ const store = configureStore({
     checkout: checkoutReducer,
     myOrders: myOrdersReducer,
     specificOrder: specificOrderReducer,
+    allOrders: allOrdersReducer,
+    deliverOrder: deliverOrderReducer,
   },
 });
 
