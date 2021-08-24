@@ -1,13 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { Button, Card, Col, Image, Row } from "react-bootstrap";
 
 const SpecificCategoryComponent = ({ foods, handleAddToCart }) => {
   return (
     <>
-      <NavLink to="/" className="my-2">
-        <Button variant="outline-dark">Go Back</Button>
-      </NavLink>
       <Row>
         {foods.map((food, index) => {
           return (

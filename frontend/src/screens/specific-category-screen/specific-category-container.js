@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { unwrapResult } from "@reduxjs/toolkit";
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import SpecificCategoryComponent from "./specific-category-component";
 import toast from "react-hot-toast";
 import { addToCart } from "../../redux/cart/cart-slice";
@@ -44,6 +45,12 @@ const SpecificCategoryContainer = ({ location }) => {
   return (
     <div>
       <Container>
+        <NavLink to="/" className="my-2">
+          <Button variant="outline-dark">
+            {" "}
+            <i className="fas fa-arrow-left"> Go Back </i>
+          </Button>
+        </NavLink>
         {status === "loading" && <Loader />}
 
         {status === "success" && (

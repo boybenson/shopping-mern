@@ -6,10 +6,6 @@ const MyOrderComponent = ({ customerOrders, handleGoBack }) => {
   return (
     <div>
       <h4>My Orders</h4>
-      {customerOrders.length !== 0 && (
-        <small>kindly scroll right for more info</small>
-      )}
-
       {customerOrders.length === 0 ? (
         <Alert variant="info">
           <span className="mt-2">sorry! You Currently Have No Orders</span>{" "}
@@ -23,7 +19,7 @@ const MyOrderComponent = ({ customerOrders, handleGoBack }) => {
           </Button>
         </Alert>
       ) : (
-        <Table className="mt-3" striped bordered hover responsive>
+        <Table className="mt-2" striped bordered hover responsive>
           <thead>
             <tr>
               <th>ID</th>
@@ -45,7 +41,7 @@ const MyOrderComponent = ({ customerOrders, handleGoBack }) => {
                   <td>
                     <NavLink to={`/v1/user/profile/order/${order._id}`}>
                       <Button variant="outline-dark" size="sm">
-                        view More
+                        Details
                       </Button>
                     </NavLink>
                   </td>

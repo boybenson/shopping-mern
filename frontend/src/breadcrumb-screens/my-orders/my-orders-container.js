@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { unwrapResult } from "@reduxjs/toolkit";
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/loader/Loader";
 import {
@@ -30,6 +30,26 @@ const MyOrdersContainer = ({ history }) => {
   return (
     <div>
       <Container>
+        {status === "success" && myOrders.customerOrders.length !== 0 && (
+          <Button
+            onClick={handleGoBack}
+            variant="outline-dark"
+            className="mb-2"
+          >
+            <i className="fas fa-arrow-left"> Go Back </i>
+          </Button>
+        )}
+
+        {status === "loading" && (
+          <Button
+            onClick={handleGoBack}
+            variant="outline-dark"
+            className="mb-2"
+          >
+            <i className="fas fa-arrow-left"> Go Back </i>
+          </Button>
+        )}
+
         {status === "loading" && <Loader />}
 
         {status === "success" && (
