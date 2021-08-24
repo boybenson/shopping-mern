@@ -1,16 +1,22 @@
 # Fast Food Delivery Web Application 🍔 🛵
 
-## Tech Stack
+# Tech Stack
+
+### Frontend
 - [React Js](https://reactjs.org/)
+- [React Router](https://reactrouter.com/)
 - [Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started)
 - [React Bootstrap](https://react-bootstrap.github.io/)
-- [Multer](https://www.npmjs.com/package/multer) and [Cloudinary](https://cloudinary.com/) for file uploads.
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [Paystack Api](https://paystack.com/) to handle payments
+
+### Backend
+- [Multer](https://www.npmjs.com/package/multer) and [Cloudinary](https://cloudinary.com/) for file uploads.
 - [Mongodb](https://www.mongodb.com/) with [Mongoose](https://mongoosejs.com/)
 - [Express Js](https://expressjs.com/)
 - [Jest Js](https://jestjs.io/)
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [Yarn](https://yarnpkg.com/)
+- [Json Web Token](https://jwt.io/)
 
 ## Installation Process
 ```
