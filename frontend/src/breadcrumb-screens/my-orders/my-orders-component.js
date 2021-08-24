@@ -2,7 +2,7 @@ import React from "react";
 import { Alert, Button, Table } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
-const MyOrderComponent = ({ customerOrders, handleGoBack }) => {
+const MyOrderComponent = ({ customerOrders }) => {
   return (
     <div>
       <h4>My Orders</h4>
@@ -10,13 +10,11 @@ const MyOrderComponent = ({ customerOrders, handleGoBack }) => {
         <Alert variant="info">
           <span className="mt-2">sorry! You Currently Have No Orders</span>{" "}
           <br></br>
-          <Button
-            onClick={handleGoBack}
-            className="mt-2"
-            variant="outline-dark"
-          >
-            <i className="fas fa-arrow-left"> Go Back </i>
-          </Button>
+          <NavLink to="/">
+            <Button className="mt-2" variant="outline-dark">
+              <i className="fas fa-pizza-slice"> Go Get Some Food </i>
+            </Button>
+          </NavLink>
         </Alert>
       ) : (
         <Table className="mt-2" striped bordered hover responsive>

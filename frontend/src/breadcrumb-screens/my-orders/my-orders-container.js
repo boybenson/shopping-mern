@@ -53,10 +53,7 @@ const MyOrdersContainer = ({ history }) => {
         {status === "loading" && <Loader />}
 
         {status === "success" && (
-          <MyOrderComponent
-            customerOrders={myOrders.customerOrders}
-            handleGoBack={handleGoBack}
-          />
+          <MyOrderComponent customerOrders={myOrders.customerOrders} />
         )}
       </Container>
     </div>

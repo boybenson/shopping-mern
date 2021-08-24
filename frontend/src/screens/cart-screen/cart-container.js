@@ -93,8 +93,8 @@ const CartContainer = ({ history }) => {
       history.push("/v1/auth/signin");
       toast.error("please signin");
     } else {
-      if (paymentMethod === "") {
-        toast.error("select payment method");
+      if (paymentMethod === "" || address === "") {
+        toast.error("Select Payment Method And Enter Address");
       } else {
         const res = await dispatch(checkoutRequest(cartInfo));
         const data = unwrapResult(res);
