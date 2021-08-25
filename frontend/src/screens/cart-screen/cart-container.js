@@ -125,6 +125,7 @@ const CartContainer = ({ history }) => {
       totalPrice={totalPrice}
       payStackProps={payStackProps}
       status={status}
+      userInfo={userInfo}
     />
   );
 };

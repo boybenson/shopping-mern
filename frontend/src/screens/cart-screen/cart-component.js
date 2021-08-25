@@ -1,5 +1,6 @@
 import React from "react";
 import { PaystackButton } from "react-paystack";
+import { NavLink } from "react-router-dom";
 import {
   Container,
   Row,
@@ -26,6 +27,7 @@ const CartComponent = ({
   totalPrice,
   payStackProps,
   status,
+  userInfo,
 }) => {
   return (
     <div>
@@ -118,36 +120,47 @@ const CartComponent = ({
                     </Form.Select>
                   </Form.Group>
 
-                  <Form.Group className="d-flex justify-content-between">
-                    {paymentMethod === "mobileMoney" ? (
-                      <PaystackButton
-                        {...payStackProps}
-                        className="btn btn-dark"
-                      />
-                    ) : (
-                      <Button
-                        type="submit"
-                        className="btn-block"
-                        disabled={cartItems.length === 0}
-                        variant="dark"
-                        onClick={handleCheckout}
-                      >
-                        {status === "loading" ? (
-                          <Spinner animation="border" />
-                        ) : (
-                          <i className="fas fa-credit-card"> Place Order </i>
-                        )}
-                      </Button>
-                    )}
+                  {userInfo && (
+                    <Form.Group className="d-flex justify-content-between">
+                      {paymentMethod === "mobileMoney" ? (
+                        <PaystackButton
+                          {...payStackProps}
+                          className="btn btn-dark"
+                        />
+                      ) : (
+                        <Button
+                          type="submit"
+                          className="btn-block"
+                          disabled={cartItems.length === 0}
+                          variant="dark"
+                          onClick={handleCheckout}
+                        >
+                          {status === "loading" ? (
+                            <Spinner animation="border" />
+                          ) : (
+                            <i className="fas fa-credit-card"> Place Order </i>
+                          )}
+                        </Button>
+                      )}
 
-                    <Button
-                      className="btn-block"
-                      variant="danger"
-                      onClick={handleGoBack}
-                    >
-                      <i className="fas fa-arrow-left"> Go Back </i>
-                    </Button>
-                  </Form.Group>
+                      <Button
+                        className="btn-block"
+                        variant="danger"
+                        onClick={handleGoBack}
+                      >
+                        <i className="fas fa-arrow-left"> Go Back </i>
+                      </Button>
+                    </Form.Group>
+                  )}
+                  {!userInfo && (
+                    <Form.Group>
+                      <NavLink to="/v1/auth/signin">
+                        <Button className="btn-block w-full" variant="info">
+                          <i className="fas fa-user"> Login To Place Order </i>
+                        </Button>
+                      </NavLink>
+                    </Form.Group>
+                  )}
                 </ListGroup.Item>
               </ListGroup>
             </Card>
