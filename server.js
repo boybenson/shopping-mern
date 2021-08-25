@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import cors from "cors";
+import path from "path";
 import cookieParser from "cookie-parser";
 import authRoute from "./routes/auth/auth-route.js";
 import foodRoute from "./routes/foods/food-route.js";
@@ -11,7 +12,7 @@ import userRoute from "./routes/users/user-route.js";
 import orderRoute from "./routes/orders/order-route.js";
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 8080;
 
 const db = await connectDatabase();
 
@@ -26,6 +27,14 @@ if (db === true) {
   app.use("/api/v1/order", orderRoute);
 
   app.use(handleError);
+
+  const __dirname = path.resolve();
+
+  app.use(express.static(path.join(__dirname + "/frontend/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+  });
 
   app.listen(port, () => {
     console.log(`App is running on port ${port}`);
