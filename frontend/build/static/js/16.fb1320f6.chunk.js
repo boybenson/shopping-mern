@@ -1,0 +1,2 @@
+(this.webpackJsonpfrontend=this.webpackJsonpfrontend||[]).push([[16],{139:function(t,n,e){"use strict";e.r(n);var c=e(2),r=e(4),o=(e(0),e(13)),s=e(32),u=e(54),a=e(1);n.default=function(t){var n=t.component,e=Object(r.a)(t,["component"]),i=Object(s.c)((function(t){return t.auth})).userInfo;return Object(a.jsx)(o.d,Object(c.a)(Object(c.a)({},e),{},{render:function(t){return i?Object(a.jsx)(n,Object(c.a)({},t)):Object(a.jsx)(o.c,{to:"/v1/auth/signin"})&&u.b.error("please signin!")&&Object(a.jsx)(o.c,{to:"/v1/auth/signin"})}}))}}}]);
+//# sourceMappingURL=16.fb1320f6.chunk.js.map
