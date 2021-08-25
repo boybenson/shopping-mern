@@ -1,4 +1,11 @@
+import dotenv from "dotenv";
+dotenv.config();
+import twilio from "twilio";
 import orderModel from "../../models/orders/orderModel.js";
+const smsClient = twilio(
+  process.env.TWILIO_ACCOUNT_SID,
+  process.env.TWILIO_AUTH_TOKEN
+);
 
 export const POST_CREATE_AN_ORDER = async (req, res, next) => {
   const { totalPrice, deliveryFee, address, foods, paymentMethod } = req.body;
@@ -16,6 +23,13 @@ export const POST_CREATE_AN_ORDER = async (req, res, next) => {
     message: "order created successfully",
     newOrder,
   });
+
+  smsClient.messages.create({
+    body: `Hello ${req?.user?.userName}, Kindly Waiting Patiently For Your Order, With ID: ${newOrder?._id}, Total Price: GH₵ ${newOrder?.totalPrice} at ${newOrder?.address}`,
+    from: "+18084193653",
+    to: `+233${req?.user?.phone?.slice(1)}`,
+  });
+  return;
 };
 
 export const GET_FETCH_MY_ORDERS = async (req, res, next) => {

@@ -46,15 +46,24 @@ const Header = () => {
                 </LinkContainer>
               )}
 
-              {userInfo && (
-                <NavDropdown
-                  title={<i className="far fa-user"> My Profile </i>}
-                >
+              {userInfo && userInfo.role === "customer" && (
+                <NavDropdown title={<i className="far fa-user"> Account </i>}>
                   <LinkContainer to="/v1/user/profile/my-orders">
                     <NavDropdown.Item>My Orders</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/v1/user/profile/update-information">
-                    <NavDropdown.Item>Update Information</NavDropdown.Item>
+                    <NavDropdown.Item>Update Profile</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
+              )}
+
+              {userInfo && userInfo.role === "admin" && (
+                <NavDropdown title={<i className="far fa-user"> DashBoard </i>}>
+                  <LinkContainer to="/v1/user/profile/all-orders">
+                    <NavDropdown.Item>All Orders</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/v1/user/profile/update-information">
+                    <NavDropdown.Item>Update Profile</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
               )}

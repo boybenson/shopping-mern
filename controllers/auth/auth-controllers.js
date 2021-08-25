@@ -1,6 +1,12 @@
+import dotenv from "dotenv";
+dotenv.config();
+import twilio from "twilio";
 import userModel from "../../models/users/userModel.js";
 import { generateToken } from "../../helpers/generate-token.js";
-
+const smsClient = twilio(
+  process.env.TWILIO_ACCOUNT_SID,
+  process.env.TWILIO_AUTH_TOKEN
+);
 const maxAge = 3 * 24 * 60 * 60;
 
 export const POST_SIGNUP_USER = async (req, res, next) => {
@@ -25,6 +31,13 @@ export const POST_SIGNUP_USER = async (req, res, next) => {
       status: 201,
       accessToken,
     });
+
+    smsClient.messages.create({
+      body: `Hello ${newUser.userName} Welcome To Food Bus, Ghana's Number 1 Fast Food Delivery Service`,
+      from: "+18084193653",
+      to: `+233${newUser.phone.slice(1)}`,
+    });
+    return;
   } else {
     const err = new Error();
     err.message = "email already exists";

@@ -78,12 +78,12 @@ const CartContainer = ({ history }) => {
   const payStackProps = {
     email: userInfo?.email,
     amount: totalPrice * 100,
-    publicKey: process.env.REACT_APP_PAYSTACK_KEY,
-    text: `Pay GH₵ ${totalPrice}`,
+    publicKey: "pk_test_1f8a48067da5793e978f1b1d07e1feea71c756f3",
+    text: `Pay GH₵  ${cartItems.length === 0 ? "0" : totalPrice}`,
     currency: "GHS",
     channels: ["mobile_money"],
     onSuccess: (res) => handlePayStackOnSuccess(res),
-    onClose: () => alert("Wait! You need this food, don't go!!!!"),
+    onClose: () => toast.error('wait!! You Need This Flow, Don"t Go!!!!!!'),
   };
 
   const handleCheckout = async (e) => {

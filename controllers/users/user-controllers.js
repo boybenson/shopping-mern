@@ -28,7 +28,7 @@ export const UPDATE_USER_INFO = async (req, res, next) => {
 };
 
 export const FETCH_ALL_USERS = async (req, res, next) => {
-  const users = await userModel.find({});
+  const users = await userModel.find({}, { password: 0 });
   res.status(200).json({
     message: "success",
     status: 200,

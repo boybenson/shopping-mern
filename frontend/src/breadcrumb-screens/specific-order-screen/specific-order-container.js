@@ -11,6 +11,7 @@ import {
 } from "../../redux/order/specific-order-slice";
 import {
   deliverOrder,
+  deliverOrderError,
   deliverOrderRequest,
 } from "../../redux/order/deliver-order-slice";
 
@@ -44,6 +45,9 @@ const SpecificOrderContainer = ({ match, history }) => {
       dispatch(deliverOrder(data));
       history.goBack();
       toast.success("food delivered, hurray!!");
+    } else {
+      dispatch(deliverOrderError(data));
+      toast.error(data?.message);
     }
   };
 

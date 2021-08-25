@@ -28,6 +28,7 @@ const UpdateInfoComponent = ({
               placeholder="Enter user name"
               defaultValue={userName}
               onChange={onChangeUserName}
+              autoFocus
             />
           </Form.Group>
 
