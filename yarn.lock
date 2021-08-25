@@ -1279,7 +1279,7 @@ toidentifier@1.0.0:
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
 
-twilio@^3.67.0:
+twilio@3.67.0:
   version "3.67.0"
   resolved "https://registry.yarnpkg.com/twilio/-/twilio-3.67.0.tgz#24d5d1ca7371b99179a08b0b36c914d1b6cdd196"
   integrity sha512-MY0qsb895IDS3GEeBVVkNThr/ONy6a+jstkxeRVLdva52PMkIsrub68PWIXX2ubpiCMJWcX3ZroxRbRmfumFBQ==
