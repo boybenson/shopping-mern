@@ -76,7 +76,7 @@ const CartContainer = ({ history }) => {
   };
 
   const payStackProps = {
-    email: userInfo.email ?? "bensony63@gmail.com",
+    email: userInfo?.email,
     amount: totalPrice * 100,
     publicKey: "pk_live_8b5be9684d8783a15e67bdb9c5418f3edffe302a",
     text: `Pay GH₵  ${cartItems.length === 0 ? "0" : totalPrice}`,
