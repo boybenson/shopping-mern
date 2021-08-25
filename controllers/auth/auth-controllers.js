@@ -10,21 +10,18 @@ const smsClient = twilio(
 const maxAge = 3 * 24 * 60 * 60;
 
 export const POST_SIGNUP_USER = async (req, res, next) => {
-  const { userName, email, password, phone, fullName } = req.body;
+  const { email, password, phone } = req.body;
 
   const isUser = await userModel.findOne({ email });
   if (!isUser) {
     const newUser = await userModel.create({
-      userName,
       phone,
       email,
       password,
-      userName: fullName,
     });
     const accessToken = generateToken(newUser._id, maxAge);
 
     res.json({
-      userName: newUser.userName,
       userId: newUser._id,
       role: newUser.role,
       phone: newUser.phone,
@@ -32,11 +29,6 @@ export const POST_SIGNUP_USER = async (req, res, next) => {
       accessToken,
     });
 
-    smsClient.messages.create({
-      body: `Hello ${newUser.userName} Welcome To Food Bus, Ghana's Number 1 Fast Food Delivery Service`,
-      from: "+18084193653",
-      to: `+233${newUser.phone.slice(1)}`,
-    });
     return;
   } else {
     const err = new Error();
