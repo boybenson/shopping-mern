@@ -3,7 +3,7 @@ import { Button, Form, Spinner, Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-const SignupComponent = ({
+const SignupUi = ({
   onChangeEmail,
   onChangePassword,
   onChangeConfirmPassword,
@@ -94,4 +94,4 @@ const SignupComponent = ({
   );
 };
 
-export default SignupComponent;
+export default SignupUi;

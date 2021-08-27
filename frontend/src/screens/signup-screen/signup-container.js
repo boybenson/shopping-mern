@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SignupComponent from "./signup-component";
+import SignupUi from "./signup-ui";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import useAuth from "../../custom-hooks/useAuth";
@@ -34,7 +34,7 @@ const SignupContainer = () => {
   };
 
   return (
-    <SignupComponent
+    <SignupUi
       email={email}
       password={password}
       fullName={fullName}
