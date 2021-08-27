@@ -3,7 +3,7 @@ import { Button, Form, Spinner, Row, Col } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const SigninComponent = ({ onChangeEmail, onChangePassword, handleSubmit }) => {
+const SigninUi = ({ onChangeEmail, onChangePassword, handleSubmit }) => {
   const { status } = useSelector((state) => state.auth);
   return (
     <div className="p-4">
@@ -54,4 +54,4 @@ const SigninComponent = ({ onChangeEmail, onChangePassword, handleSubmit }) => {
   );
 };
 
-export default SigninComponent;
+export default SigninUi;
