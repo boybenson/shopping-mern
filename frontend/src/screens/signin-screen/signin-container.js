@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SigninComponent from "./signin-component";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import useAuth from "../../custom-hooks/useAuth";
 
 const SigninContainer = () => {
   const history = useHistory();
@@ -10,6 +11,7 @@ const SigninContainer = () => {
 
   const { userInfo } = useSelector((state) => state.auth);
 
+  const [authLogic] = useAuth();
   const onChangeEmail = (e) => setEmail(e.target.value);
   const onChangePassword = (e) => setPassword(e.target.value);
 
@@ -21,6 +23,7 @@ const SigninContainer = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    authLogic({ email, password }, "SIGNIN");
   };
 
   return (
