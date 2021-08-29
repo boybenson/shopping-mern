@@ -15,8 +15,8 @@ const SignupComponent = ({
       <Container>
         <Row className="d-flex justify-content-center">
           <Col md={8}>
-            <Form onSubmit={handleSubmit} autocomplete="off">
-              <Form.Group className="mb-3" controlId="formBasicPhone">
+            <Form onSubmit={handleSubmit} autoComplete="off">
+              <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control
                   type="email"

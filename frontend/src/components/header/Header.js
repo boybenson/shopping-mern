@@ -38,14 +38,6 @@ const Header = () => {
 
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
-              {userInfo && (
-                <LinkContainer to="/">
-                  <Nav.Link>
-                    Hello, {userInfo?.userName.split(" ")[0]}{" "}
-                  </Nav.Link>
-                </LinkContainer>
-              )}
-
               {userInfo && userInfo.role === "customer" && (
                 <NavDropdown title={<i className="far fa-user"> Account </i>}>
                   <LinkContainer to="/v1/user/profile/my-orders">
