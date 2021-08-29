@@ -1,12 +1,8 @@
 import dotenv from "dotenv";
 dotenv.config();
-import twilio from "twilio";
 import userModel from "../../models/users/userModel.js";
 import { generateToken } from "../../helpers/generate-token.js";
-const smsClient = twilio(
-  process.env.TWILIO_ACCOUNT_SID,
-  process.env.TWILIO_AUTH_TOKEN
-);
+
 const maxAge = 3 * 24 * 60 * 60;
 
 export const POST_SIGNUP_USER = async (req, res, next) => {

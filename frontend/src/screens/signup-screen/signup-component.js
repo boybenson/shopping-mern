@@ -16,27 +16,27 @@ const SignupComponent = ({
         <Row className="d-flex justify-content-center">
           <Col md={8}>
             <Form onSubmit={handleSubmit} autocomplete="off">
-              <Form.Floating className="mb-3">
+              <Form.Group className="mb-3" controlId="formBasicPhone">
+                <Form.Label>Email Address</Form.Label>
                 <Form.Control
-                  id="floatingInputCustom"
                   type="email"
-                  placeholder="name@example.com"
+                  placeholder="example@email.com"
+                  size="lg"
                   onChange={onChangeEmail}
                   required
                 />
-                <label htmlFor="floatingInputCustom">Enter Email address</label>
-              </Form.Floating>
+              </Form.Group>
 
-              <Form.Floating className="mb-3">
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password </Form.Label>
                 <Form.Control
-                  id="floatingInputCustom"
                   type="password"
-                  placeholder="name@example.com"
+                  placeholder="***********"
+                  size="lg"
                   onChange={onChangePassword}
                   required
                 />
-                <label htmlFor="floatingInputCustom">Enter Password</label>
-              </Form.Floating>
+              </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPhone">
                 <Form.Label>Phone Number</Form.Label>

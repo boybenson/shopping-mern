@@ -1,11 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
-import twilio from "twilio";
 import orderModel from "../../models/orders/orderModel.js";
-const smsClient = twilio(
-  process.env.TWILIO_ACCOUNT_SID,
-  process.env.TWILIO_AUTH_TOKEN
-);
 
 export const POST_CREATE_AN_ORDER = async (req, res, next) => {
   const { totalPrice, deliveryFee, address, foods, paymentMethod } = req.body;
