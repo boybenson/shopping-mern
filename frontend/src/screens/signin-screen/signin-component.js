@@ -2,33 +2,47 @@ import React from "react";
 import { Button, Form, Spinner, Row, Col } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import TextField from "../../components/input-fields/TextField";
 
-const SigninComponent = ({ onChangeEmail, onChangePassword, handleSubmit }) => {
+const SigninComponent = ({
+  handleChange,
+  handleSubmit,
+  handleBlur,
+  errors,
+  values,
+  touched,
+}) => {
   const { status } = useSelector((state) => state.auth);
   return (
     <div className="p-4">
       <Row className="d-flex justify-content-center">
         <Col md={8}>
-          <Form onSubmit={handleSubmit} className="jumbotron">
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3">
+              <TextField
+                onChange={handleChange}
                 type="email"
-                placeholder="example@gmail.com"
-                size="lg"
-                onChange={onChangeEmail}
-                required
+                name="email"
+                placeholder="example@email.com"
+                onBlur={handleBlur}
+                touched={touched}
+                label="Email Address"
+                errors={errors}
+                values={values}
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
+            <Form.Group className="mb-3">
+              <TextField
+                onChange={handleChange}
                 type="password"
-                placeholder="*****************"
-                size="lg"
-                onChange={onChangePassword}
-                required
+                name="password"
+                placeholder="****************"
+                onBlur={handleBlur}
+                touched={touched}
+                label="Password "
+                errors={errors}
+                values={values}
               />
             </Form.Group>
 

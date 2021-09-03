@@ -25,7 +25,7 @@ export const mainViewRoutes = [
   },
   {
     url: "/v1/cart",
-    protected: true,
+    protected: false,
     component: CartScreen,
   },
   {

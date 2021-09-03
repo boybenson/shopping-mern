@@ -123,10 +123,12 @@ const CartComponent = ({
                   {userInfo && (
                     <Form.Group className="d-flex justify-content-between">
                       {paymentMethod === "mobileMoney" ? (
-                        <PaystackButton
-                          {...payStackProps}
-                          className="btn btn-dark"
-                        />
+                        <Button
+                          disabled={cartItems.length === 0 ? true : false}
+                          variant="outline-dark "
+                        >
+                          <PaystackButton {...payStackProps} />
+                        </Button>
                       ) : (
                         <Button
                           type="submit"
