@@ -2,12 +2,15 @@ import React from "react";
 import { Button, Container, Form, Spinner, Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import TextField from "../../components/input-fields/TextField";
 
 const SignupComponent = ({
-  onChangeEmail,
-  onChangePassword,
-  onChangePhone,
   handleSubmit,
+  values,
+  errors,
+  handleBlur,
+  touched,
+  handleChange,
 }) => {
   const { status } = useSelector((state) => state.signup);
   return (
@@ -16,36 +19,45 @@ const SignupComponent = ({
         <Row className="d-flex justify-content-center">
           <Col md={8}>
             <Form onSubmit={handleSubmit} autoComplete="off">
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email Address</Form.Label>
-                <Form.Control
+              <Form.Group className="mb-3">
+                <TextField
+                  onChange={handleChange}
                   type="email"
+                  name="email"
                   placeholder="example@email.com"
-                  size="lg"
-                  onChange={onChangeEmail}
-                  required
+                  onBlur={handleBlur}
+                  touched={touched}
+                  label="Email Address"
+                  errors={errors}
+                  values={values}
                 />
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password </Form.Label>
-                <Form.Control
+              <Form.Group className="mb-3">
+                <TextField
+                  onChange={handleChange}
                   type="password"
-                  placeholder="***********"
-                  size="lg"
-                  onChange={onChangePassword}
-                  required
+                  name="password"
+                  placeholder="****************"
+                  onBlur={handleBlur}
+                  touched={touched}
+                  label="Password "
+                  errors={errors}
+                  values={values}
                 />
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPhone">
-                <Form.Label>Phone Number</Form.Label>
-                <Form.Control
+              <Form.Group className="mb-3">
+                <TextField
+                  onChange={handleChange}
                   type="tel"
+                  name="phone"
                   placeholder="0546949655"
-                  size="lg"
-                  onChange={onChangePhone}
-                  required
+                  onBlur={handleBlur}
+                  touched={touched}
+                  label="Phone Number"
+                  errors={errors}
+                  values={values}
                 />
               </Form.Group>
 
