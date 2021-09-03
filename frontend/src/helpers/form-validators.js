@@ -1,35 +1,27 @@
-export const signupFormValidate = (values) => {
-  const errors = {};
+import * as Yup from "yup";
 
-  if (!values.email) {
-    errors.email = "Email Is Required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = "Invalid Email Address";
-  }
-
-  if (!values.password) {
-    errors.password = "Password Is Required";
-  }
-
-  if (!values.phone) {
-    errors.phone = "Contact Is Required";
-  }
-
-  return errors;
+export const signupFormValidate = () => {
+  return Yup.object({
+    email: Yup.string()
+      .email("Invalid Email Address")
+      .required("Email is Required"),
+    phone: Yup.string()
+      .length(10, "Must Be Exactly 10 Numbers")
+      .matches(/^[0]?\d{9}$/, "Not A Valid Phone Number")
+      .required("Phone Number Is Required"),
+    password: Yup.string()
+      .min(6, "Must Be At Least 6 letters")
+      .required("Password Is Required"),
+  });
 };
 
-export const signiFormValidate = (values) => {
-  const errors = {};
-
-  if (!values.email) {
-    errors.email = "Email Is Required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = "Invalid Email Address";
-  }
-
-  if (!values.password) {
-    errors.password = "Password Is Required";
-  }
-
-  return errors;
+export const signiFormValidate = () => {
+  return Yup.object({
+    email: Yup.string()
+      .email("Invalid Email Address")
+      .required("Email is Required"),
+    password: Yup.string()
+      .min(6, "Must Be At Least 6 letters")
+      .required("Password Is Required"),
+  });
 };

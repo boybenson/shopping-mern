@@ -16,7 +16,7 @@ const SigninContainer = () => {
         email: "",
         password: "",
       },
-      validate: signiFormValidate,
+      validationSchema: signiFormValidate,
       onSubmit: (data) => {
         authLogic(data, "SIGNIN");
       },

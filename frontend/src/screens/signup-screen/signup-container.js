@@ -17,7 +17,7 @@ const SignupContainer = () => {
         password: "",
         phone: "",
       },
-      validate: signupFormValidate,
+      validationSchema: signupFormValidate,
       onSubmit: (data) => {
         authLogic(data, "SIGNUP");
       },

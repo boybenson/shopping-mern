@@ -1,5 +1,5 @@
-unneccesary information from user
------email phone password
+unneccesary information from user --- done
+-----email phone password ----- done
 
 places order with out cart items ( momo )
 
