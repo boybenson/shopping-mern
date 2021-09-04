@@ -25,3 +25,10 @@ export const signiFormValidate = () => {
       .required("Password Is Required"),
   });
 };
+
+export const checkoutFormValidate = () => {
+  return Yup.object({
+    address: Yup.string().required("Location is Required"),
+    paymentMethod: Yup.string().required("Select Payment Method"),
+  });
+};

@@ -11,6 +11,7 @@ const TextField = ({
   touched,
   errors,
   name,
+  size,
 }) => {
   return (
     <div>
@@ -18,7 +19,7 @@ const TextField = ({
       <Form.Control
         type={type ?? "text"}
         placeholder={placeholder}
-        size="lg"
+        size={size ?? "lg"}
         name={name}
         defaultValue={values[name] ?? ""}
         onBlur={handleBlur}

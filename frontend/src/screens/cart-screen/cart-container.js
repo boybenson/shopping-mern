@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import CartComponent from "./cart-component";
+import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
+
 import {
   clearCart,
   increaseQty,
@@ -15,15 +17,14 @@ import {
   checkoutError,
   checkoutRequest,
 } from "../../redux/checkout/checkout-slice";
+import { payStackProps } from "../../helpers/paystack";
+import { checkoutFormValidate } from "../../helpers/form-validators";
 
 const CartContainer = ({ history }) => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.auth);
   const { status } = useSelector((state) => state.checkout);
-
-  const [address, setAddress] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("");
 
   const totalPrice = Number(
     cartItems
@@ -47,16 +48,20 @@ const CartContainer = ({ history }) => {
     dispatch(decreaseQty(item));
   };
 
+  const { handleSubmit, handleBlur, handleChange, errors, values, touched } =
+    useFormik({
+      initialValues: {
+        address: "",
+        paymentMethod: "",
+      },
+      validationSchema: checkoutFormValidate,
+      onSubmit: (data) => {},
+    });
+
   const handleGoBack = () => history.goBack();
-
-  const onChangeAddress = (e) => setAddress(e.target.value);
-
-  const onChangePaymentMethod = (e) => setPaymentMethod(e.target.value);
 
   const cartInfo = {
     deliveryFee: 10,
-    address,
-    paymentMethod,
     foods: cartItems,
     totalPrice,
   };
@@ -75,41 +80,6 @@ const CartContainer = ({ history }) => {
     }
   };
 
-  const payStackProps = {
-    email: userInfo?.email,
-    amount: totalPrice * 100,
-    publicKey: "pk_live_8b5be9684d8783a15e67bdb9c5418f3edffe302a",
-    text: `Pay GH₵  ${cartItems.length === 0 ? "0" : totalPrice}`,
-    currency: "GHS",
-    channels: ["mobile_money"],
-    onSuccess: (res) => handlePayStackOnSuccess(res),
-    onClose: () => toast.error('wait!! You Need This Flow, Don"t Go!!!!!!'),
-  };
-
-  const handleCheckout = async (e) => {
-    e.preventDefault();
-
-    if (!userInfo) {
-      history.push("/v1/auth/signin");
-      toast.error("please signin");
-    } else {
-      if (paymentMethod === "" || address === "") {
-        toast.error("Select Payment Method And Enter Address");
-      } else {
-        const res = await dispatch(checkoutRequest(cartInfo));
-        const data = unwrapResult(res);
-        if (data.status === 201) {
-          dispatch(checkout(data));
-          localStorage.removeItem("cartItems");
-          dispatch(clearCart());
-          toast.success("congrats!, great meal awaits you!");
-        } else {
-          dispatch(checkoutError(data));
-          toast.error("sorry an unexpected occur!");
-        }
-      }
-    }
-  };
   return (
     <CartComponent
       cartItems={cartItems}
@@ -117,15 +87,22 @@ const CartContainer = ({ history }) => {
       handleRemoveFromCart={handleRemoveFromCart}
       increaseQty={handleIncreaseQty}
       decreaseQty={handleDecreaseQty}
-      handleCheckout={handleCheckout}
       handleGoBack={handleGoBack}
-      onChangeAddress={onChangeAddress}
-      onChangePaymentMethod={onChangePaymentMethod}
-      paymentMethod={paymentMethod}
       totalPrice={totalPrice}
-      payStackProps={payStackProps}
+      payStackProps={payStackProps(
+        userInfo,
+        cartItems,
+        totalPrice,
+        handlePayStackOnSuccess
+      )}
       status={status}
       userInfo={userInfo}
+      handleBlur={handleBlur}
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+      errors={errors}
+      values={values}
+      touched={touched}
     />
   );
 };

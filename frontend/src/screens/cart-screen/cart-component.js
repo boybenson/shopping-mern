@@ -1,6 +1,4 @@
 import React from "react";
-import { PaystackButton } from "react-paystack";
-import { NavLink } from "react-router-dom";
 import {
   Container,
   Row,
@@ -10,23 +8,25 @@ import {
   Button,
   ListGroup,
   Form,
-  Spinner,
 } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import SelectField from "../../components/input-fields/SelectField";
+import TextField from "../../components/input-fields/TextField";
+import { paymentOptions } from "../../data/payment";
 
 const CartComponent = ({
-  paymentMethod,
   cartItems,
   handleClearCart,
   handleRemoveFromCart,
   increaseQty,
   decreaseQty,
-  handleCheckout,
-  handleGoBack,
-  onChangeAddress,
-  onChangePaymentMethod,
   totalPrice,
-  payStackProps,
-  status,
+  handleChange,
+  handleSubmit,
+  handleBlur,
+  errors,
+  values,
+  touched,
   userInfo,
 }) => {
   return (
@@ -95,74 +95,58 @@ const CartComponent = ({
                 </ListGroup.Item>
 
                 <ListGroup.Item>
-                  <Form.Group
-                    className="mb-3"
-                    controlId="formBasicdeliveryType"
-                  >
-                    <Form.Label>Delivery Address</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="please enter accurate location"
-                      required
-                      onChange={onChangeAddress}
-                    />
-                  </Form.Group>
+                  <Form onSubmit={handleSubmit}>
+                    <Form.Group>
+                      <TextField
+                        onChange={handleChange}
+                        name="address"
+                        placeholder="Legon Campus"
+                        onBlur={handleBlur}
+                        touched={touched}
+                        label="Delivery Location"
+                        errors={errors}
+                        values={values}
+                        size="lg"
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <SelectField
+                        onChange={handleChange}
+                        options={paymentOptions}
+                        name="paymentMethod"
+                        errors={errors}
+                        touched={touched}
+                      />
+                    </Form.Group>
 
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Payment Method</Form.Label>
-                    <Form.Select onChange={onChangePaymentMethod}>
-                      <option>Select Payment Method</option>
-                      <option value="cashOnDelivery">Cash On Delivery</option>
-                      <option value="mobileMoney">Mobile Money</option>
-                      <option value="3" disabled>
-                        Bank Transfer (Not Available Now)
-                      </option>
-                    </Form.Select>
-                  </Form.Group>
-
-                  {userInfo && (
-                    <Form.Group className="d-flex justify-content-between">
-                      {paymentMethod === "mobileMoney" ? (
-                        <Button
-                          disabled={cartItems.length === 0 ? true : false}
-                          variant="outline-dark "
-                        >
-                          <PaystackButton {...payStackProps} />
-                        </Button>
-                      ) : (
+                    {userInfo ? (
+                      <Form.Group className="mt-3 d-flex justify-content-between">
                         <Button
                           type="submit"
-                          className="btn-block"
-                          disabled={cartItems.length === 0}
-                          variant="dark"
-                          onClick={handleCheckout}
+                          variant="outline-dark"
+                          disabled={cartItems.length === 0 ? true : false}
                         >
-                          {status === "loading" ? (
-                            <Spinner animation="border" />
-                          ) : (
-                            <i className="fas fa-credit-card"> Place Order </i>
-                          )}
+                          <i className="fas fa-truck"> Place Order </i>
                         </Button>
-                      )}
 
-                      <Button
-                        className="btn-block"
-                        variant="danger"
-                        onClick={handleGoBack}
-                      >
-                        <i className="fas fa-arrow-left"> Go Back </i>
-                      </Button>
-                    </Form.Group>
-                  )}
-                  {!userInfo && (
-                    <Form.Group>
-                      <NavLink to="/v1/auth/signin">
-                        <Button className="btn-block w-full" variant="info">
-                          <i className="fas fa-user"> Login To Place Order </i>
-                        </Button>
-                      </NavLink>
-                    </Form.Group>
-                  )}
+                        <NavLink to="/">
+                          <Button variant="outline-danger">
+                            <i className="fas fa-arrow-left"> Go Back </i>
+                          </Button>
+                        </NavLink>
+                      </Form.Group>
+                    ) : (
+                      <Form.Group className="mt-3">
+                        <NavLink to="/v1/auth/signin">
+                          <Button variant="success">
+                            <i className="fas fa-sign-in-alt"></i>
+                            {"  "}
+                            Please Signin To Checkout
+                          </Button>
+                        </NavLink>
+                      </Form.Group>
+                    )}
+                  </Form>
                 </ListGroup.Item>
               </ListGroup>
             </Card>
