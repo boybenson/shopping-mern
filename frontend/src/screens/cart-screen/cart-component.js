@@ -139,7 +139,7 @@ const CartComponent = ({
                       <Form.Group className="mt-3">
                         <NavLink to="/v1/auth/signin">
                           <Button variant="success">
-                            <i className="fas fa-sign-in-alt"></i>
+                            <i className="far fa-user"></i>
                             {"  "}
                             Please Signin To Checkout
                           </Button>
