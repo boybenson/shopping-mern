@@ -39,3 +39,7 @@ a {
   font-weight: bold;
   color: lightskyblue;
 }
+
+.search-item {
+  cursor: pointer;
+}

@@ -10,8 +10,8 @@ import {
   Form,
 } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import LocationSearchInput from "../../components/input-fields/Places-autocomplete";
 import SelectField from "../../components/input-fields/SelectField";
-import TextField from "../../components/input-fields/TextField";
 import { paymentOptions } from "../../data/payment";
 
 const CartComponent = ({
@@ -28,6 +28,7 @@ const CartComponent = ({
   values,
   touched,
   userInfo,
+  payStackProps,
 }) => {
   return (
     <div>
@@ -97,10 +98,21 @@ const CartComponent = ({
                 <ListGroup.Item>
                   <Form onSubmit={handleSubmit}>
                     <Form.Group>
-                      <TextField
+                      {/* <TextField
                         onChange={handleChange}
                         name="address"
                         placeholder="Legon Campus"
+                        onBlur={handleBlur}
+                        touched={touched}
+                        label="Delivery Location"
+                        errors={errors}
+                        values={values}
+                        size="lg"
+                      /> */}
+                      <LocationSearchInput
+                        onChange={handleChange}
+                        name="address"
+                        placeholder="Search Places..."
                         onBlur={handleBlur}
                         touched={touched}
                         label="Delivery Location"
@@ -119,33 +131,21 @@ const CartComponent = ({
                       />
                     </Form.Group>
 
-                    {userInfo ? (
-                      <Form.Group className="mt-3 d-flex justify-content-between">
-                        <Button
-                          type="submit"
-                          variant="outline-dark"
-                          disabled={cartItems.length === 0 ? true : false}
-                        >
-                          <i className="fas fa-truck"> Place Order </i>
-                        </Button>
+                    <Form.Group className="mt-3 d-flex justify-content-between">
+                      <Button
+                        type="submit"
+                        variant="outline-dark"
+                        disabled={cartItems.length === 0 ? true : false}
+                      >
+                        <i className="fas fa-truck"> Proceed </i>
+                      </Button>
 
-                        <NavLink to="/">
-                          <Button variant="outline-danger">
-                            <i className="fas fa-arrow-left"> Go Back </i>
-                          </Button>
-                        </NavLink>
-                      </Form.Group>
-                    ) : (
-                      <Form.Group className="mt-3">
-                        <NavLink to="/v1/auth/signin">
-                          <Button variant="success">
-                            <i className="far fa-user"></i>
-                            {"  "}
-                            Please Signin To Checkout
-                          </Button>
-                        </NavLink>
-                      </Form.Group>
-                    )}
+                      <NavLink to="/">
+                        <Button variant="outline-danger">
+                          <i className="fas fa-arrow-left"> Go Back </i>
+                        </Button>
+                      </NavLink>
+                    </Form.Group>
                   </Form>
                 </ListGroup.Item>
               </ListGroup>

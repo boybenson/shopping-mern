@@ -12,6 +12,7 @@ const TextField = ({
   errors,
   name,
   size,
+  defaultValue,
 }) => {
   return (
     <div>
@@ -21,7 +22,7 @@ const TextField = ({
         placeholder={placeholder}
         size={size ?? "lg"}
         name={name}
-        defaultValue={values[name] ?? ""}
+        defaultValue={defaultValue ?? ""}
         onBlur={handleBlur}
         onChange={onChange}
       />

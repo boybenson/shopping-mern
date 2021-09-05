@@ -58,6 +58,7 @@ const CartContainer = ({ history }) => {
       onSubmit: (data) => {},
     });
 
+  console.log("values", values);
   const handleGoBack = () => history.goBack();
 
   const cartInfo = {
