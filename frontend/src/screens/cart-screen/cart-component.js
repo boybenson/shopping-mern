@@ -10,8 +10,8 @@ import {
   Form,
 } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import LocationSearchInput from "../../components/input-fields/PlacesAutocomplete";
 import SelectField from "../../components/input-fields/SelectField";
-import TextField from "../../components/input-fields/TextField";
 import { paymentOptions } from "../../data/payment";
 
 const CartComponent = ({
@@ -98,7 +98,7 @@ const CartComponent = ({
                 <ListGroup.Item>
                   <Form onSubmit={handleSubmit}>
                     <Form.Group>
-                      <TextField
+                      {/* <TextField
                         onChange={handleChange}
                         name="address"
                         placeholder="Legon Campus"
@@ -107,7 +107,15 @@ const CartComponent = ({
                         label="Delivery Location"
                         errors={errors}
                         values={values}
-                        size="lg"
+                        size="sm"
+                      /> */}
+                      <LocationSearchInput
+                        onChange={handleChange}
+                        name="address"
+                        errors={errors}
+                        touched={touched}
+                        label="Delivery Location"
+                        defaultValue={values?.address}
                       />
                     </Form.Group>
                     <Form.Group>

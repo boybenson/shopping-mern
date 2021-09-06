@@ -9269,7 +9269,7 @@ react-paystack@3.0.4:
   resolved "https://registry.yarnpkg.com/react-paystack/-/react-paystack-3.0.4.tgz#c4ddb0b4ef257af7f9f18438489aeeea98dba8b6"
   integrity sha512-4M2s2Vxcf09WIsrK/Tlf7Ah47UG0lECL7I+bD5i2Qb3pZNOhLXgas25lCLY25FpZz6GPiVtbY0+4QcKPQdsd6g==
 
-react-places-autocomplete@^7.3.0:
+react-places-autocomplete@7.3.0:
   version "7.3.0"
   resolved "https://registry.yarnpkg.com/react-places-autocomplete/-/react-places-autocomplete-7.3.0.tgz#81a2345ae4a6fc35d7a712ccd4850d497553ba1b"
   integrity sha512-86wcHC69JATvWBnIS/yCsBHLtwzOGcnx3Ye94u74yTrz1jLRC/txkVDkf6rvC+Jq3zNe/tAg/W53x0EaH1ZPPw==

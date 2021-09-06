@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import CartComponent from "./cart-component";
@@ -58,7 +58,6 @@ const CartContainer = ({ history }) => {
       onSubmit: (data) => {},
     });
 
-  console.log("values", values);
   const handleGoBack = () => history.goBack();
 
   const cartInfo = {

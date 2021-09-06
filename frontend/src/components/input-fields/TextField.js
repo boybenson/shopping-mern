@@ -22,7 +22,7 @@ const TextField = ({
         placeholder={placeholder}
         size={size ?? "lg"}
         name={name}
-        defaultValue={defaultValue ?? ""}
+        defaultValue={defaultValue}
         onBlur={handleBlur}
         onChange={onChange}
       />

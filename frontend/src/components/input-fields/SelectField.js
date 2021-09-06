@@ -8,8 +8,8 @@ const SelectField = ({ name, label, options, onChange, touched, errors }) => {
       <Form.Select name={name} onChange={onChange}>
         {options?.map((option, index) => {
           return (
-            <option value={option.value} key={index}>
-              {option.label}
+            <option value={option?.value} key={index}>
+              {option?.label}
             </option>
           );
         })}
