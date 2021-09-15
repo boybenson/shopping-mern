@@ -10,9 +10,10 @@ import {
   Form,
 } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import LocationSearchInput from "../../components/input-fields/PlacesAutocomplete";
 import SelectField from "../../components/input-fields/SelectField";
+import TextField from "../../components/input-fields/TextField";
 import { paymentOptions } from "../../data/payment";
+import { PaystackButton } from "react-paystack";
 
 const CartComponent = ({
   cartItems,
@@ -98,7 +99,7 @@ const CartComponent = ({
                 <ListGroup.Item>
                   <Form onSubmit={handleSubmit}>
                     <Form.Group>
-                      {/* <TextField
+                      <TextField
                         onChange={handleChange}
                         name="address"
                         placeholder="Legon Campus"
@@ -107,15 +108,7 @@ const CartComponent = ({
                         label="Delivery Location"
                         errors={errors}
                         values={values}
-                        size="sm"
-                      /> */}
-                      <LocationSearchInput
-                        onChange={handleChange}
-                        name="address"
-                        errors={errors}
-                        touched={touched}
-                        label="Delivery Location"
-                        defaultValue={values?.address}
+                        size="lg"
                       />
                     </Form.Group>
                     <Form.Group>
@@ -134,7 +127,11 @@ const CartComponent = ({
                         variant="outline-dark"
                         disabled={cartItems.length === 0 ? true : false}
                       >
-                        <i className="fas fa-truck"> Proceed </i>
+                        {values.paymentMethod === "mobileMoney" ? (
+                          <PaystackButton {...payStackProps} />
+                        ) : (
+                          <Button variant="dark">Place Order</Button>
+                        )}
                       </Button>
 
                       <NavLink to="/">

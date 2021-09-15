@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import CartComponent from "./cart-component";

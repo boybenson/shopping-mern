@@ -9,7 +9,7 @@ export const payStackProps = (
   return {
     email: userInfo?.email,
     amount: totalPrice * 100,
-    publicKey: "pk_live_8b5be9684d8783a15e67bdb9c5418f3edffe302a",
+    publicKey: "pk_live_85a09e60704584bd6c1b72940ec6c45c119478df",
     text: `Pay GH₵  ${cartItems.length === 0 ? "0" : totalPrice}`,
     currency: "GHS",
     channels: ["mobile_money"],

@@ -27,7 +27,6 @@ if (db === true) {
   app.use("/api/v1/order", orderRoute);
 
   app.use(handleError);
-
   const __dirname = path.resolve();
 
   app.use(express.static(path.join(__dirname + "/frontend/build")));

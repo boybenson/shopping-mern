@@ -15,21 +15,19 @@ const App = () => {
         <Suspense fallback={<Loader />}>
           <main>
             <Switch>
-              {mainViewRoutes.map((route, index) => {
-                return route.protected ? (
-                  <ProtectedRoute
-                    component={route.component}
-                    path={route.url}
-                    key={index}
-                  />
-                ) : (
-                  <Route
-                    path={route.url}
-                    component={route.component}
-                    key={index}
-                  />
-                );
-              })}
+              {mainViewRoutes.map(
+                ({ protected: protect, component, url }, index) => {
+                  return protect ? (
+                    <ProtectedRoute
+                      component={component}
+                      path={url}
+                      key={index}
+                    />
+                  ) : (
+                    <Route path={url} component={component} key={index} />
+                  );
+                }
+              )}
             </Switch>
           </main>
         </Suspense>
