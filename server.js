@@ -24,6 +24,7 @@ if (db === true) {
   app.use("/api/v1/auth", authRoute);
   app.use("/api/v1/foods", foodRoute);
   app.use("/api/v1/user", userRoute);
+  ``;
   app.use("/api/v1/order", orderRoute);
 
   app.use(handleError);

@@ -7,7 +7,7 @@ export const payStackProps = (
   handlePayStackOnSuccess
 ) => {
   return {
-    email: userInfo?.email,
+    email: "sperhit.1@gmail.com",
     amount: totalPrice * 100,
     publicKey: "pk_live_85a09e60704584bd6c1b72940ec6c45c119478df",
     text: `Pay GH₵  ${cartItems.length === 0 ? "0" : totalPrice}`,
